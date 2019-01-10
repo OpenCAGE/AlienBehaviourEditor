@@ -1,15 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<workspaces selected="Vampire">
-  <workspace name="Design Mode" folder="behaviors\Design Mode" export="">
-    <plugin>DesignMode.dll</plugin>
-  </workspace>
-  <workspace name="Project Hoshimi" folder="behaviors\Project Hoshimi" export="exported\Project Hoshimi">
-    <plugin>ProjectHoshimi.dll</plugin>
-  </workspace>
-  <workspace name="Blank Plugin" folder="behaviors\Blank Plugin" export="">
-    <plugin>BlankPlugin.dll</plugin>
-  </workspace>
-  <workspace name="Vampire" folder="$DOCUMENTS\Brainiac Designer\Vampire" export="">
+<workspaces selected="DEMO">
+  <workspace name="DEMO" folder="out" export="out">
     <plugin>Vampire.dll</plugin>
   </workspace>
 </workspaces>
