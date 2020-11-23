@@ -1,0 +1,3 @@
+[submodule "BehaviourTreeTool/BehaviourTreeTool/SharedAssets"]
+	path = BehaviourTreeTool/BehaviourTreeTool/SharedAssets
+	url = https://github.com/OpenCAGE/SharedAssets
