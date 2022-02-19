@@ -38,24 +38,22 @@ namespace LegendPlugin.Nodes
     {
         //All parameters added
 
-        protected ChildStateType _stateType;
-        //private string _Name = "";
+        protected ChildStateType _childStateType;
+        private string _Name = "";
 
         [DesignerEnum("Child state type", "ChildStateType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public ChildStateType stateType
+        public ChildStateType ChildStateType
         {
-            get { return _stateType; }
-            set { _stateType = value; }
+            get { return _childStateType; }
+            set { _childStateType = value; }
         }
 
-        /*
         [DesignerString("Name", "Name", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
         public string Name
         {
             get { return _Name; }
             set { _Name = value; }
         }
-        */
 
         public SequenceStateless() : base("Stateless", "A SEQUENCE THAT IS STATELESS.")
  
@@ -67,8 +65,8 @@ namespace LegendPlugin.Nodes
             base.CloneProperties(newnode);
 
             SequenceStateless cond = (SequenceStateless)newnode;
-            cond._stateType = _stateType;
-            //cond._Name = _Name;
+            cond._childStateType = _childStateType;
+            cond._Name = _Name;
         }
     }
 }
