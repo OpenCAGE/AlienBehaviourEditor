@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionGetOutOfTheWay() : base("GET OUT OF THE WAY ", "GET US OUT OF THE WAY OF THE ACTION.")
+        public ActionGetOutOfTheWay() : base("GetOutOfTheWay", "GET US OUT OF THE WAY OF THE ACTION.")
  
         {
         }

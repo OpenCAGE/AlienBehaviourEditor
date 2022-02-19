@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionCanBreakout : ConditionConnectors
 	{
         public ConditionCanBreakout()
-            : base("CAN BREAK OUT ", "CHECKS TO SEE IF WE CAN BREAK OUT.")
+            : base("CanBreakout", "ARE WE ABLE TO BREAK OUT?")
  
         {
             //All parameters added

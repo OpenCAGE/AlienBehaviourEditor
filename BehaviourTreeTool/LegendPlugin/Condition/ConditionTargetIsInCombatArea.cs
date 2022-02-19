@@ -56,7 +56,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionTargetIsInCombatArea()
-            : base("TARGET IS IN COMBAT AREA ", "IS OUR TARGET IN A SPECIFIC COMBAT AREA? SHOULD WE WORK THIS OUT BY ACTUAL POSITION OR SENSED POSITION?")
+            : base("TargetIsInCombatArea", "IS OUR TARGET IN A SPECIFIC COMBAT AREA? SHOULD WE WORK THIS OUT BY ACTUAL POSITION OR SENSED POSITION?")
  
         {
         }

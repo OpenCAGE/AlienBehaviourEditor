@@ -56,7 +56,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionIsCharacterClass()
-            : base("IS CHARACTER CLASS ", "CHECK TO SEE IF OWNER AND/OR TARGET ARE A SPECIFIED CHARACTER CLASS.")
+            : base("IsCharacterClass", "CHECK TO SEE IF OWNER AND/OR TARGET ARE A SPECIFIED CHARACTER CLASS.")
  
         {
         }

@@ -56,7 +56,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionIsPerformingRoleOrCouldPerformRole()
-            : base("IS PERFORMING ROLE OR COULD PERFORM ROLE ", "ARE WE CURRENTLY PERFORMING A SPECIFIED ROLE, AND IF NOT, COULD WE PERFORM IT?")
+            : base("IsPerformingRoleOrCouldPerformRole", "ARE WE CURRENTLY PERFORMING A SPECIFIED ROLE, AND IF NOT, COULD WE PERFORM IT?")
  
         {
         }

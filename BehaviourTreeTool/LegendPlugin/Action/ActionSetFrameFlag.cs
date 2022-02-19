@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionSetFrameFlag() : base("SET FRAME FLAG ", "SET A FRAME FLAG FOR QUERYING LATER.")
+        public ActionSetFrameFlag() : base("SetFrameFlag", "SET A FRAME FLAG FOR QUERYING LATER.")
  
         {
         }

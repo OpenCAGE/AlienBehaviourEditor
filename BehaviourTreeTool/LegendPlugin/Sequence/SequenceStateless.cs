@@ -57,7 +57,7 @@ namespace LegendPlugin.Nodes
         }
         */
 
-        public SequenceStateless() : base("STATELESS SEQUENCE ", "A SEQUENCE THAT IS STATELESS.")
+        public SequenceStateless() : base("Stateless", "A SEQUENCE THAT IS STATELESS.")
  
         {
         }

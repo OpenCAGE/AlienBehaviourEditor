@@ -57,7 +57,7 @@ namespace LegendPlugin.Nodes
         }
         */
 
-        public SequenceLinear() : base("LINEAR SEQUENCE ", "A LINEAR SEQUENCE.")
+        public SequenceLinear() : base("Linear", "A LINEAR SEQUENCE.")
  
         {
         }

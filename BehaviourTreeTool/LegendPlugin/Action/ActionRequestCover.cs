@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _cond = value; }
         }
 
-        public ActionRequestCover() : base("REQUEST COVER ", "REQUEST SOME COVER WITHIN A SPECIFIED RADIUS, WITH THE OPTION OF IGNORING OUR CURRENT COVER.")
+        public ActionRequestCover() : base("RequestCover", "REQUEST SOME COVER WITHIN A SPECIFIED RADIUS, WITH THE OPTION OF IGNORING OUR CURRENT COVER.")
  
         {
         }

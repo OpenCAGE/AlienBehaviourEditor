@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionHasDoneSuspectResponseWithinTime()
-            : base("FINISHED MOVING AFTER SUSPICION IN SET TIME ", "HAVE WE FINISHED MOVING TO A LOCATION IN RESPONSE TO A SUSPICIOUS ACTIVITY IN THE SPECIFIED TIME?")
+            : base("HasDoneSuspectResponseWithinTime", "HAVE WE FINISHED MOVING TO A LOCATION IN RESPONSE TO A SUSPICIOUS ACTIVITY IN THE SPECIFIED TIME?")
  
         {
         }

@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionAllowedToSearch : ConditionConnectors
 	{
         public ConditionAllowedToSearch()
-            : base("ALLOWED TO SEARCH ", "ARE WE ALLOWED TO SEARCH?")
+            : base("AllowedToSearch", "ARE WE ALLOWED TO SEARCH?")
  
         {
             //All parameters added

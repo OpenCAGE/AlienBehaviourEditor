@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionSuspectTargetResponse() : base("SUSPECT TARGET RESPONSE ", "PERFORM THE RESPONSE TO OUR TARGET SUSPICIONS.")
+        public ActionSuspectTargetResponse() : base("SuspectTargetResponse", "PERFORM THE RESPONSE TO OUR TARGET SUSPICIONS.")
  
         {
         }

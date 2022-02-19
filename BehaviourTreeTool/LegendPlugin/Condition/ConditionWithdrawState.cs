@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionWithdrawState()
-            : base("WITHDRAW STATE ", "DO WE CURRENTLY HAVE A SPECIFIED WITHDRAW STATE?")
+            : base("WithdrawState", "DO WE CURRENTLY HAVE A SPECIFIED WITHDRAW STATE?")
  
         {
         }

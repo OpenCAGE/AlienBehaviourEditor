@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionMoveWithGamepad() : base("MOVE WITH GAMEPAD ", "PERFORM THE ACTION OF MOVING WITH A GAMEPAD.")
+        public ActionMoveWithGamepad() : base("MoveWithGamepad", "PERFORM THE ACTION OF MOVING WITH A GAMEPAD.")
  
         {
         }

@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _cond = value; }
         }
 
-        public ActionStartTimer() : base("START TIMER ", "START A TIMER OF A SPECIFIC TYPE.")
+        public ActionStartTimer() : base("StartTimer", "START A TIMER OF A SPECIFIC TYPE.")
  
         {
         }

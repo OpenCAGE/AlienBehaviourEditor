@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionThreatEscalation() : base("THREAT ESCALATION ", "PERFORM AN ESCALATION TO THE CURRENT KNOWN THREAT.")
+        public ActionThreatEscalation() : base("ThreatEscalation", "PERFORM AN ESCALATION TO THE CURRENT KNOWN THREAT.")
  
         {
         }

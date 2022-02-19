@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionSuspend() : base("SUSPEND ", "SUSPEND US UNTIL NEEDED.")
+        public ActionSuspend() : base("Suspend", "SUSPEND US UNTIL NEEDED.")
  
         {
         }

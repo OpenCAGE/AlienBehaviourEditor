@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _type2 = value; }
         }
 
-        public ActionMoveToBackstageViaVentClosestToAlien() : base("MOVE TO BACKSTAGE VIA VENT CLOSEST TO ALIEN ", "PERFORM THE ACTION OF MOVING BACKSTAGE, USING THE VENT CLOSEST TO THE ALIEN.")
+        public ActionMoveToBackstageViaVentClosestToAlien() : base("MoveToBackstageViaVentClosestToAlien", "PERFORM THE ACTION OF MOVING BACKSTAGE, USING THE VENT CLOSEST TO THE ALIEN.")
  
         {
         }

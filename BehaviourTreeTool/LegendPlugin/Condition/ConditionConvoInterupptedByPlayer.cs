@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionConvoInterupptedByPlayer : ConditionConnectors
 	{
         public ConditionConvoInterupptedByPlayer()
-            : base("CONVERSATION INTERUPPTED BY PLAYER ", "WAS THE CONVERSATION INTERRUPTED BY THE PLAYER?")
+            : base("ConvoInterupptedByPlayer", "WAS THE CONVERSATION INTERRUPTED BY THE PLAYER?")
  
         {
             //All parameters added

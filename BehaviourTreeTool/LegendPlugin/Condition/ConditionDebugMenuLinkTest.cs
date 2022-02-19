@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _In_Game_Menu_Text = value; }
         }
 
-        public ConditionDebugMenuLinkTest() : base("DEBUG MENU CHECK ", "CHECKS TO SEE IF AN OPTION IS ENABLED/DISABLED IN THE DEBUG MENU.")
+        public ConditionDebugMenuLinkTest() : base("DebugMenuLinkTest", "CHECKS TO SEE IF AN OPTION IS ENABLED/DISABLED IN THE DEBUG MENU.")
  
         {
         }

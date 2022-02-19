@@ -71,7 +71,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionMoveInDirection() : base("MOVE IN DIRECTION ", "MOVE IN A SPECIFIED DIRECTION OVER A SPECIFIED DISTANCE AND SPEED.")
+        public ActionMoveInDirection() : base("MoveInDirection", "MOVE IN A SPECIFIED DIRECTION OVER A SPECIFIED DISTANCE AND SPEED.")
  
         {
         }

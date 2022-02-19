@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _type3 = value; }
         }
 
-        public ActionMoveToMostRecentSensedPosition() : base("MOVE TO MOST RECENT SENSED POSITION ", "MOVE TO THE POSITION WE MOST RECENTLY SENSED SOMETHING.")
+        public ActionMoveToMostRecentSensedPosition() : base("MoveToMostRecentSensedPosition", "MOVE TO THE POSITION WE MOST RECENTLY SENSED SOMETHING.")
  
         {
         }

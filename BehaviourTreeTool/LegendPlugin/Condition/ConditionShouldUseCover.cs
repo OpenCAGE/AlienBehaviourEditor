@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionShouldUseCover : ConditionConnectors
 	{
         public ConditionShouldUseCover()
-            : base("SHOULD USE COVER ", "SHOULD WE USE COVER, OR BE STOOD IN THE OPEN?")
+            : base("ShouldUseCover", "SHOULD WE USE COVER, OR BE STOOD IN THE OPEN?")
  
         {
             //All parameters added

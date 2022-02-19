@@ -56,7 +56,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionObjectiveIsInCombatArea()
-            : base("OBJECTIVE IS IN COMBAT AREA ", "IS OUR CURRENT OBJECTIVE IN A COMBAT AREA?")
+            : base("ObjectiveIsInCombatArea", "IS OUR CURRENT OBJECTIVE IN A COMBAT AREA?")
  
         {
         }

@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionMoveThroughTarget() : base("MOVE THROUGH TARGET ", "MOVE THROUGH OUR TARGET AT A SPECIFIED SPEED.")
+        public ActionMoveThroughTarget() : base("MoveThroughTarget", "MOVE THROUGH OUR TARGET AT A SPECIFIED SPEED.")
  
         {
         }

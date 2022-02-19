@@ -71,7 +71,7 @@ namespace LegendPlugin.Nodes
             set { _Distance = value; }
         }
 
-        public ActionMoveToTarget() : base("MOVE TO TARGET ", "MOVE TO OUR TARGET AT A SPECIFIED SPEED WITH A SPECIFIED STOPPING DISTANCE.")
+        public ActionMoveToTarget() : base("MoveToTarget", "MOVE TO OUR TARGET AT A SPECIFIED SPEED WITH A SPECIFIED STOPPING DISTANCE.")
  
         {
         }

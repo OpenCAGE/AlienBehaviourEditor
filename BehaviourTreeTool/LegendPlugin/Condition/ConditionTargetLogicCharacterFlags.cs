@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionTargetLogicCharacterFlags()
-            : base("TARGET LOGIC CHARACTER FLAGS ", "DOES OUR TARGET HAVE A SPECIFIED LOGIC FLAG SET?")
+            : base("TargetLogicCharacterFlags", "DOES OUR TARGET HAVE A SPECIFIED LOGIC FLAG SET?")
  
         {
         }

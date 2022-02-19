@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionTriggerSound() : base("TRIGGER SOUND ", "TRIGGER A SOUND OF A CERTAIN TYPE.")
+        public ActionTriggerSound() : base("TriggerSound", "TRIGGER A SOUND OF A CERTAIN TYPE.")
  
         {
         }

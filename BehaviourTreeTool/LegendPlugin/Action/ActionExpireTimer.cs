@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionExpireTimer() : base("EXPIRE TIMER ", "EXPIRE THE TIMER OF A SPECIFIED TYPE.")
+        public ActionExpireTimer() : base("ExpireTimer", "EXPIRE THE TIMER OF A SPECIFIED TYPE.")
  
         {
         }

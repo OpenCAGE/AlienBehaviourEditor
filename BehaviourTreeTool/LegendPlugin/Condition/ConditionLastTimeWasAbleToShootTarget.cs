@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionLastTimeWasAbleToShootTarget()
-            : base("LAST TIME WAS ABLE TO SHOOT TARGET WAS WITHIN ", "COULD WE SHOOT OUR TARGET WITHIN A SPECIFIED TIME CONSTRAINT?")
+            : base("LastTimeWasAbleToShootTarget", "COULD WE SHOOT OUR TARGET WITHIN A SPECIFIED TIME CONSTRAINT?")
  
         {
         }

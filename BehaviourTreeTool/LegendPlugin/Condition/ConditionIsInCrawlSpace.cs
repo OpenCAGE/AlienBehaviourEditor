@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionIsInCrawlSpace()
-            : base("IS IN CRAWL SPACE ", "ARE WE AND/OR OUR TARGET IN A CRAWL SPACE?")
+            : base("IsInCrawlSpace", "ARE WE AND/OR OUR TARGET IN A CRAWL SPACE?")
  
         {
         }

@@ -64,7 +64,7 @@ namespace LegendPlugin.Nodes
         }
 
         public DecoratorTimer()
-            : base("TIMER ", "A DECORATOR FOR A TIMER.")
+            : base("Timer", "A DECORATOR FOR A TIMER.")
  
         {
         }

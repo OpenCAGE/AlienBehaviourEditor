@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionMeleeAttack() : base("MELEE ATTACK ", "PERFORM A MELEE ATTACK.")
+        public ActionMeleeAttack() : base("MeleeAttack", "PERFORM A MELEE ATTACK.")
  
         {
         }
