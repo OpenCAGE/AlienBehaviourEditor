@@ -36,7 +36,7 @@ namespace LegendPlugin.Nodes
 {
     public class ActionMakeAggressive : Action
 	{
-        public ActionMakeAggressive() : base("MAKE AGGRESSIVE ", "MAKE US AGRESSIVE!")
+        public ActionMakeAggressive() : base("MakeAggressive", "MAKE US AGRESSIVE!")
  
         {
             //All parameters added

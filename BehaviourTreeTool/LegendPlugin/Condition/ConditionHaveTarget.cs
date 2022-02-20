@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionHaveTarget : ConditionConnectors
 	{
         public ConditionHaveTarget()
-            : base("HAS VALID PRIMARY TARGET ", "DO WE HAVE A VALID PRIMARY TARGET?")
+            : base("HaveTarget", "DO WE HAVE A VALID PRIMARY TARGET?")
  
         {
             //All parameters added

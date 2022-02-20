@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _AssertInfo = value; }
         }
 
-        public ActionAssert() : base("ASSERT ", "ASSERT AN ERROR - USED FOR DEBUGGING.")
+        public ActionAssert() : base("Assert", "ASSERT AN ERROR - USED FOR DEBUGGING.")
  
         {
         }

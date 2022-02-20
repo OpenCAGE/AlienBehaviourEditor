@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ConditionHasTimerExpired() : base("TIMER EXPIRED ", "HAS THE SPECIFIED TIMER EXPIRED?")
+        public ConditionHasTimerExpired() : base("HasTimerExpired", "HAS THE SPECIFIED TIMER EXPIRED?")
 	
 		{
         }

@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _SetAtleastTo = value; }
         }
 
-        public ActionSetGaugeAmount() : base("SET GAUGE AMOUNT ", "SET A LEVEL ON A SPECIFIED GAUGE.")
+        public ActionSetGaugeAmount() : base("SetGaugeAmount", "SET A LEVEL ON A SPECIFIED GAUGE.")
  
         {
         }

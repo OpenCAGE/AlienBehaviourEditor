@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionTargetIsWithinRoutingDistance()
-            : base("TARGET IS WITHIN ROUTING DISTANCE ", "IS THE ROUTE TO OUR TARGET WITHIN A SPECIFIED DISTANCE?")
+            : base("TargetIsWithinRoutingDistance", "IS THE ROUTE TO OUR TARGET WITHIN A SPECIFIED DISTANCE?")
  
         {
         }

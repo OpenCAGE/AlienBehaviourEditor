@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionSuspiciousItemGroupMembersRoutingTo : ConditionConnectors
 	{
         public ConditionSuspiciousItemGroupMembersRoutingTo()
-            : base("SUSPICIOUS ITEM - GROUP MEMBERS ROUTING TO ", "ARE GROUP MEMBERS ROUTING TO A SUSPICIOUS ITEM?")
+            : base("SuspiciousItemGroupMembersRoutingTo", "ARE GROUP MEMBERS ROUTING TO A SUSPICIOUS ITEM?")
  
         {
             //All parameters added

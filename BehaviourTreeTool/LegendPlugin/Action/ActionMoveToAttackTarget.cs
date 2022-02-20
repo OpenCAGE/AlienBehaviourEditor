@@ -71,7 +71,7 @@ namespace LegendPlugin.Nodes
             set { _Distance = value; }
         }
 
-        public ActionMoveToAttackTarget() : base("MOVE TO ATTACK TARGET ", "PERFORM A MOVEMENT TO OUR TARGET READY TO ATTACK, WITH SPECIFIED STOPPING ANIMATION AND DISTANCE.")
+        public ActionMoveToAttackTarget() : base("MoveToAttackTarget", "PERFORM A MOVEMENT TO OUR TARGET READY TO ATTACK, WITH SPECIFIED STOPPING ANIMATION AND DISTANCE.")
  
         {
         }

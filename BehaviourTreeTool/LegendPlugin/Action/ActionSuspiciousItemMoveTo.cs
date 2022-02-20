@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _ShouldAim = value; }
         }
 
-        public ActionSuspiciousItemMoveTo() : base("SUSPICIOUS ITEM MOVE TO ", "PERFORM THE ACTION OF MOVING TO A SUSPICIOUS ITEM.")
+        public ActionSuspiciousItemMoveTo() : base("SuspiciousItemMoveTo", "PERFORM THE ACTION OF MOVING TO A SUSPICIOUS ITEM.")
  
         {
         }

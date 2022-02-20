@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public DecoratorAwarenessState()
-            : base("AWARENESS STATE ", "DECORATOR FOR CURRENT AWARENESS STATE.")
+            : base("AwarenessState", "DECORATOR FOR CURRENT AWARENESS STATE.")
  
         {
         }

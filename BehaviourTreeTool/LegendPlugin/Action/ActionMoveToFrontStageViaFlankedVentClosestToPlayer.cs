@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionMoveToFrontStageViaFlankedVentClosestToPlayer() : base("MOVE TO FRONTSTAGE VIA VENT CLOSEST TO PLAYER ", "MOVE FROM BACKSTAGE TO FRONTSTAGE VIA THE VENT THAT IS CLOSEST TO OUR PLAYER.")
+        public ActionMoveToFrontStageViaFlankedVentClosestToPlayer() : base("MoveToFrontStageViaFlankedVentClosestToPlayer", "MOVE FROM BACKSTAGE TO FRONTSTAGE VIA THE VENT THAT IS CLOSEST TO OUR PLAYER.")
  
         {
         }

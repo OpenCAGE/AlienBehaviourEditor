@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _Time = value; }
         }
 
-        public ActionIdleTimeFacingTarget() : base("IDLE TIME FACING TARGET ", "PERFORM IDLE OVER TIME WHILE FACING OUR TARGET.")
+        public ActionIdleTimeFacingTarget() : base("IdleTimeFacingTarget", "PERFORM IDLE OVER TIME WHILE FACING OUR TARGET.")
  
         {
         }

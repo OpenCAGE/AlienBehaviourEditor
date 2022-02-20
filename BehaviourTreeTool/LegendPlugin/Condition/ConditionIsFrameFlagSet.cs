@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionIsFrameFlagSet()
-            : base("IS FRAME FLAG SET ", "CHECK TO SEE IF A SPECIFIED FRAME FLAG IS CURRENTLY SET.")
+            : base("IsFrameFlagSet", "CHECK TO SEE IF A SPECIFIED FRAME FLAG IS CURRENTLY SET.")
  
         {
         }

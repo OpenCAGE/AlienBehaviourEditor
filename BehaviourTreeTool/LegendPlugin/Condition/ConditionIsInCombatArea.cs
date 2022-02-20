@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionIsInCombatArea()
-            : base("IS IN COMBAT AREA ", "ARE WE IN A COMBAT AREA?")
+            : base("IsInCombatArea", "ARE WE IN A COMBAT AREA?")
  
         {
         }

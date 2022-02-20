@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionListeningInConvo() : base("LISTENING IN CONVERSATION ",  "PERFORM THE ACTION OF LISTENER IN A CONVERSATION.")
+        public ActionListeningInConvo() : base("ListeningInConvo",  "PERFORM THE ACTION OF LISTENER IN A CONVERSATION.")
  
         {
         }

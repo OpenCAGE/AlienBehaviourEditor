@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public DecoratorLockBestVents()
-            : base("LOCK BEST VENTS ", "DECORATOR FOR LOCKING THE BEST VENTS FOR A REASON.")
+            : base("LockBestVents", "DECORATOR FOR LOCKING THE BEST VENTS FOR A REASON.")
  
         {
         }

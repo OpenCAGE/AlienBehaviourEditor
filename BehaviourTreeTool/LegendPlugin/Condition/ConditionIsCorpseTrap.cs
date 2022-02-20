@@ -36,7 +36,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionIsCorpseTrap : ConditionConnectors
 	{
         public ConditionIsCorpseTrap()
-            : base("IS CORPSE TRAP ", "ARE WE A CORPSE TRAP?")
+            : base("IsCorpseTrap", "ARE WE A CORPSE TRAP?")
  
         {
             //All parameters added

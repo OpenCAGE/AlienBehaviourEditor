@@ -36,7 +36,7 @@ namespace LegendPlugin.Nodes
 {
     public class ActionFail : Action
 	{
-        public ActionFail() : base("FAIL ", "RESULT IN A FAILED ACTION.")
+        public ActionFail() : base("Fail", "RESULT IN A FAILED ACTION.")
  
         {
             //All parameters added

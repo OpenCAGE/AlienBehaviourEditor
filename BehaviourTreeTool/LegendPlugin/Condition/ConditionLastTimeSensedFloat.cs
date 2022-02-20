@@ -64,7 +64,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionLastTimeSensedFloat()
-            : base("LAST TIME SENSED WITHIN THRESHOLD (FLOAT) ", "IS THE LAST TIME WE SENSED A SPECIFIED SENSE ABOVE A SPECIFIED THRESHOLD WITHIN A SPECIFIED TIME?")
+            : base("LastTimeSensedFloat", "IS THE LAST TIME WE SENSED A SPECIFIED SENSE ABOVE A SPECIFIED THRESHOLD WITHIN A SPECIFIED TIME?")
         {
         }
 

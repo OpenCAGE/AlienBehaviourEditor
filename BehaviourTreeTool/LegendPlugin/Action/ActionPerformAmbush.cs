@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionPerformAmbush() : base("PERFORM AMBUSH ", "PERFORM AN AMBUSH OUR TARGET.")
+        public ActionPerformAmbush() : base("PerformAmbush", "PERFORM AN AMBUSH OUR TARGET.")
  
         {
         }

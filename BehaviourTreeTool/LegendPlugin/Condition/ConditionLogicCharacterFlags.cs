@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionLogicCharacterFlags()
-            : base("LOGIC CHARACTER FLAGS ", "DO WE HAVE A SPECIFIED LOGIC FLAG?")
+            : base("LogicCharacterFlags", "DO WE HAVE A SPECIFIED LOGIC FLAG?")
  
         {
         }

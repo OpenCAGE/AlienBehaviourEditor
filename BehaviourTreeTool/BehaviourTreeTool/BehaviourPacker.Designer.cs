@@ -43,7 +43,7 @@
             // unpackButton
             // 
             this.unpackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.unpackButton.Location = new System.Drawing.Point(96, 618);
+            this.unpackButton.Location = new System.Drawing.Point(96, 620);
             this.unpackButton.Name = "unpackButton";
             this.unpackButton.Size = new System.Drawing.Size(229, 50);
             this.unpackButton.TabIndex = 2;
@@ -54,7 +54,7 @@
             // repackButton
             // 
             this.repackButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.repackButton.Location = new System.Drawing.Point(96, 674);
+            this.repackButton.Location = new System.Drawing.Point(96, 676);
             this.repackButton.Name = "repackButton";
             this.repackButton.Size = new System.Drawing.Size(229, 50);
             this.repackButton.TabIndex = 3;
@@ -65,7 +65,7 @@
             // resetTrees
             // 
             this.resetTrees.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.resetTrees.Location = new System.Drawing.Point(653, 618);
+            this.resetTrees.Location = new System.Drawing.Point(653, 620);
             this.resetTrees.Name = "resetTrees";
             this.resetTrees.Size = new System.Drawing.Size(229, 50);
             this.resetTrees.TabIndex = 4;
@@ -110,7 +110,7 @@
             // 
             this.Title4.AutoSize = true;
             this.Title4.Font = new System.Drawing.Font("Isolation", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Title4.Location = new System.Drawing.Point(90, 582);
+            this.Title4.Location = new System.Drawing.Point(90, 580);
             this.Title4.Name = "Title4";
             this.Title4.Size = new System.Drawing.Size(278, 33);
             this.Title4.TabIndex = 50;
@@ -120,7 +120,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Isolation", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(647, 582);
+            this.label1.Location = new System.Drawing.Point(647, 580);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(169, 33);
             this.label1.TabIndex = 51;

@@ -55,7 +55,7 @@ namespace LegendPlugin.Nodes
             set { _behave = value; }
         }
 
-        public ActionBackstageAreaSweep() : base("BACKSTAGE AREA SWEEP ", "PERFORM A BACKSTAGE AREA SWEEP.")
+        public ActionBackstageAreaSweep() : base("BackstageAreaSweep", "PERFORM A BACKSTAGE AREA SWEEP.")
  
         {
         }

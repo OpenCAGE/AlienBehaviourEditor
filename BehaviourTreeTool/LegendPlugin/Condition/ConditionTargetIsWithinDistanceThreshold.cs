@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionTargetIsWithinDistanceThreshold()
-            : base("TARGET IS WITHIN DISTANCE THRESHOLD ", "IS OUR TARGET WITHIN A SPECIFIED DISTANCE THRESHOLD?")
+            : base("TargetIsWithinDistanceThreshold", "IS OUR TARGET WITHIN A SPECIFIED DISTANCE THRESHOLD?")
  
         {
         }

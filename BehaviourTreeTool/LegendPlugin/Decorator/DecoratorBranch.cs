@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public DecoratorBranch()
-            : base("BRANCH ", "A DECORATOR FOR THE BRANCH TYPE.")
+            : base("Branch", "A DECORATOR FOR THE BRANCH TYPE.")
  
         {
         }

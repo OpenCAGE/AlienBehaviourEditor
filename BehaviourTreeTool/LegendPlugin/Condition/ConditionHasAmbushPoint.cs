@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionHasAmbushPoint : ConditionConnectors
 	{
         public ConditionHasAmbushPoint()
-            : base("HAS AMBUSH POINT ", "CHECKS TO SEE IF THERE IS A VALID AMBUSH POINT.")
+            : base("HasAmbushPoint", "CHECKS TO SEE IF THERE IS A VALID AMBUSH POINT.")
  
         {
             //All parameters added

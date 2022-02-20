@@ -50,7 +50,7 @@ namespace LegendPlugin.Nodes
         */
 
         public SelectorLinear()
-            : base("LINEAR SELECTOR ", "A LINEAR LOGIC SELECTOR BRANCH.")
+            : base("Linear", "A LINEAR LOGIC SELECTOR BRANCH.")
  
         {
         }

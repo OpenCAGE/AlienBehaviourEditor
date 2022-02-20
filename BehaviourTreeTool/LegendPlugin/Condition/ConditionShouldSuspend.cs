@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class ConditionShouldSuspend : ConditionConnectors
 	{
         public ConditionShouldSuspend()
-            : base("SHOULD SUSPEND ", "SHOULD WE BE SUSPENDED?")
+            : base("ShouldSuspend", "SHOULD WE BE SUSPENDED?")
  
         {
             //All parameters added

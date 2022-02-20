@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionTargetsWeaponHasProperty()
-            : base("TARGET'S WEAPON HAS PROPERTY ", "DOES OUR TARGET'S WEAPON HAVE A SPECIFIED PROPERTY?")
+            : base("TargetsWeaponHasProperty", "DOES OUR TARGET'S WEAPON HAVE A SPECIFIED PROPERTY?")
  
         {
         }

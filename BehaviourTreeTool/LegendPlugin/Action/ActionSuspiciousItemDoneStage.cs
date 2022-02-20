@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionSuspiciousItemDoneStage() : base("SUSPICIOUS ITEM DONE STAGE ", "SET OUR CURRENT STAGE ON THE SUSPICION STATE.")
+        public ActionSuspiciousItemDoneStage() : base("SuspiciousItemDoneStage", "SET OUR CURRENT STAGE ON THE SUSPICION STATE.")
  
         {
         }

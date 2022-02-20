@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionBrokenCover() : base("BROKEN COVER ", "ACTION OF BREAKING COVER.")
+        public ActionBrokenCover() : base("BrokenCover", "ACTION OF BREAKING COVER.")
  
         {
         }

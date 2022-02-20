@@ -211,8 +211,8 @@ namespace Brainiac.Design
 
 				// update the status of the buttons
 				saveButton.Enabled= _behaviorTreeList.HasFileManagers();
-				saveAsButton.Enabled= _behaviorTreeList.HasFileManagers();
-				exportButton.Enabled= _behaviorTreeList.HasExporters();
+				//saveAsButton.Enabled= _behaviorTreeList.HasFileManagers();
+				//exportButton.Enabled= _behaviorTreeList.HasExporters();
 			}
 		}
 

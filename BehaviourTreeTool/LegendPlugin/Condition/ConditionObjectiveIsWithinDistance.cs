@@ -56,7 +56,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionObjectiveIsWithinDistance()
-            : base("OBJECTIVE IS WITHIN DISTANCE ", "IS OUR OBJECTIVE WITHIN A SPECIFIED DISTANCE?")
+            : base("ObjectiveIsWithinDistance", "IS OUR OBJECTIVE WITHIN A SPECIFIED DISTANCE?")
  
         {
         }

@@ -71,7 +71,7 @@ namespace LegendPlugin.Nodes
             set { _cond4 = value; }
         }
 
-        public ActionRangedAim() : base("RANGED AIM ", "PERFORM A RANGED AIM AT OUR TARGET.")
+        public ActionRangedAim() : base("RangedAim", "PERFORM A RANGED AIM AT OUR TARGET.")
  
         {
         }

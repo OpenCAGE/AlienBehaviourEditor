@@ -79,7 +79,7 @@ namespace LegendPlugin.Nodes
             set { _Time = value; }
         }
 
-        public ActionIdleTimeFacingTargetMostRecentSensedPosition() : base("IDLE TIME FACING TARGET'S MOST RECENT SENSED POSITION ", "PERFORM IDLE FOR A SPECIFIED TIME TOWARDS OUR TARGET'S MOST RECENTLY SENSED POSITION, WITH THRESHOLD.")
+        public ActionIdleTimeFacingTargetMostRecentSensedPosition() : base("IdleTimeFacingTargetMostRecentSensedPosition", "PERFORM IDLE FOR A SPECIFIED TIME TOWARDS OUR TARGET'S MOST RECENTLY SENSED POSITION, WITH THRESHOLD.")
  
         {
         }

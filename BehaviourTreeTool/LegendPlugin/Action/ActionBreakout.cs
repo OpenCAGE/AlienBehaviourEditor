@@ -47,7 +47,7 @@ namespace LegendPlugin.Nodes
             set { _type = value; }
         }
 
-        public ActionBreakout() : base("BREAK OUT ", "PERFORM A BREAK OUT.")
+        public ActionBreakout() : base("Breakout", "PERFORM A BREAK OUT.")
  
         {
         }

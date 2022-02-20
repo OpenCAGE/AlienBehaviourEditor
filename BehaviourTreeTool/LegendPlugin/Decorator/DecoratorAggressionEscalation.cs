@@ -37,7 +37,7 @@ namespace LegendPlugin.Nodes
 	public class DecoratorAggressionEscalation : Decorator
 	{
         public DecoratorAggressionEscalation()
-            : base("AGGRESSION ESCALATION ", "A DECORATOR TO ESCALATE AGGRESSION.")
+            : base("AggressionEscalation", "A DECORATOR TO ESCALATE AGGRESSION.")
  
         {
             //All parameters added

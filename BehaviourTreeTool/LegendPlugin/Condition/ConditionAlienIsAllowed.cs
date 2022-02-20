@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionAlienIsAllowed()
-            : base("ALIEN CAN PERFORM ACTION ", "IS THE ALIEN ALLOWED TO PERFORM A SPECIFIED ACTION?")
+            : base("AlienIsAllowed", "IS THE ALIEN ALLOWED TO PERFORM A SPECIFIED ACTION?")
  
         {
         }

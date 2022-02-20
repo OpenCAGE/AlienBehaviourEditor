@@ -63,7 +63,7 @@ namespace LegendPlugin.Nodes
             set { _cond = value; }
         }
 
-        public ActionRangedShoot() : base("RANGED SHOOT ", "SHOOT AT OUR TARGET FROM A RANGE.")
+        public ActionRangedShoot() : base("RangedShoot", "SHOOT AT OUR TARGET FROM A RANGE.")
  
         {
         }

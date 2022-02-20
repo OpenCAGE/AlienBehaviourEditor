@@ -48,7 +48,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionHasFlankedVentCloseToPlayer()
-            : base("HAS VENT CLOSE TO PLAYER ", "DO WE HAVE A VENT CLOSE TO THE PLAYER?")
+            : base("HasFlankedVentCloseToPlayer", "DO WE HAVE A VENT CLOSE TO THE PLAYER?")
  
         {
         }

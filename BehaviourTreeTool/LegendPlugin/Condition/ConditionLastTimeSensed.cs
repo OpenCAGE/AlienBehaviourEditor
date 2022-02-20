@@ -64,7 +64,7 @@ namespace LegendPlugin.Nodes
         }
 
         public ConditionLastTimeSensed()
-            : base("LAST TIME SENSED WITHIN THRESHOLD ", "IS THE LAST TIME WE SENSED A SPECIFIED SENSE ABOVE A SPECIFIED THRESHOLD WITHIN A SPECIFIED TIME?")
+            : base("LastTimeSensed", "IS THE LAST TIME WE SENSED A SPECIFIED SENSE ABOVE A SPECIFIED THRESHOLD WITHIN A SPECIFIED TIME?")
  
         {
         }
