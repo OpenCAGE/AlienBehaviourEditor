@@ -70,10 +70,10 @@ namespace LegendPlugin
             /*
              * ACTIONS
             */
-            //actions.Items.Add(typeof(Nodes.ActionAbortMeleeAttack));
+            actions.Items.Add(typeof(Nodes.ActionAbortMeleeAttack));
             actions.Items.Add(typeof(Nodes.ActionAffectedByFlameThrower));
             actions.Items.Add(typeof(Nodes.ActionAffectedByFlameThrowerInVent));
-            //actions.Items.Add(typeof(Nodes.ActionAlienWonScareTest));
+            actions.Items.Add(typeof(Nodes.ActionAlienWonScareTest));
             actions.Items.Add(typeof(Nodes.ActionApplyPrimaryDamageControlResponse));
             actions.Items.Add(typeof(Nodes.ActionAssert));
             actions.Items.Add(typeof(Nodes.ActionBackstageAlienResponse));
@@ -83,14 +83,14 @@ namespace LegendPlugin
             actions.Items.Add(typeof(Nodes.ActionChangeCover));
             actions.Items.Add(typeof(Nodes.ActionDead));
             actions.Items.Add(typeof(Nodes.ActionDebugMenuLinkItem));
-            //actions.Items.Add(typeof(Nodes.ActionDebugString));
+            actions.Items.Add(typeof(Nodes.ActionDebugString));
             actions.Items.Add(typeof(Nodes.ActionDespawn));
             actions.Items.Add(typeof(Nodes.ActionDoneSystematicSearch));
             actions.Items.Add(typeof(Nodes.ActionExpireTimer));
             actions.Items.Add(typeof(Nodes.ActionFail));
-            //actions.Items.Add(typeof(Nodes.ActionFakeSense));
+            actions.Items.Add(typeof(Nodes.ActionFakeSense));
             actions.Items.Add(typeof(Nodes.ActionForceIdle));
-            //actions.Items.Add(typeof(Nodes.ActionForceSearch));
+            actions.Items.Add(typeof(Nodes.ActionForceSearch));
             actions.Items.Add(typeof(Nodes.ActionGetOutOfTheWay));
             actions.Items.Add(typeof(Nodes.ActionHitTargetAndRun));
             actions.Items.Add(typeof(Nodes.ActionIdle));
@@ -100,7 +100,7 @@ namespace LegendPlugin
             actions.Items.Add(typeof(Nodes.ActionIdleTimeFacingTarget));
             actions.Items.Add(typeof(Nodes.ActionIdleTimeFacingTargetMostRecentSensedPosition));
             actions.Items.Add(typeof(Nodes.ActionIdleTimeFacingTargetOutsideCombatArea));
-            //actions.Items.Add(typeof(Nodes.ActionIdleTimeFacingTargetSensedPosition));
+            actions.Items.Add(typeof(Nodes.ActionIdleTimeFacingTargetSensedPosition));
             actions.Items.Add(typeof(Nodes.ActionListeningInConvo));
             actions.Items.Add(typeof(Nodes.ActionMakeAggressive));
             actions.Items.Add(typeof(Nodes.ActionMeleeAttack));
@@ -117,21 +117,21 @@ namespace LegendPlugin
             actions.Items.Add(typeof(Nodes.ActionMoveToTarget));
             actions.Items.Add(typeof(Nodes.ActionMoveWithGamepad));
             actions.Items.Add(typeof(Nodes.ActionNotifySquad));
-            //actions.Items.Add(typeof(Nodes.ActionPauseSenses));
+            actions.Items.Add(typeof(Nodes.ActionPauseSenses));
             actions.Items.Add(typeof(Nodes.ActionPerformAmbush));
             actions.Items.Add(typeof(Nodes.ActionPerformRole));
             actions.Items.Add(typeof(Nodes.ActionPlayerController));
-            //actions.Items.Add(typeof(Nodes.ActionPlayTree));
+            actions.Items.Add(typeof(Nodes.ActionPlayTree));
             actions.Items.Add(typeof(Nodes.ActionPlayTreeAndFaceTarget));
             actions.Items.Add(typeof(Nodes.ActionRangedAim));
             actions.Items.Add(typeof(Nodes.ActionRangedShoot));
             actions.Items.Add(typeof(Nodes.ActionRequestCover));
-            //actions.Items.Add(typeof(Nodes.ActionResetSearchJobs));
+            actions.Items.Add(typeof(Nodes.ActionResetSearchJobs));
             actions.Items.Add(typeof(Nodes.ActionScript));
             actions.Items.Add(typeof(Nodes.ActionSetFrameFlag));
             actions.Items.Add(typeof(Nodes.ActionSetGaugeAmount));
             actions.Items.Add(typeof(Nodes.ActionSetLogicCharacterFlags));
-            //actions.Items.Add(typeof(Nodes.ActionSetMenaceManager));
+            actions.Items.Add(typeof(Nodes.ActionSetMenaceManager));
             actions.Items.Add(typeof(Nodes.ActionSetWithdrawState));
             actions.Items.Add(typeof(Nodes.ActionSpeakingInConvo));
             actions.Items.Add(typeof(Nodes.ActionStartTimer));
@@ -143,7 +143,7 @@ namespace LegendPlugin
             actions.Items.Add(typeof(Nodes.ActionSuspiciousItemMoveTo));
             actions.Items.Add(typeof(Nodes.ActionSuspiciousItemReaction));
             actions.Items.Add(typeof(Nodes.ActionSwitchToNextTarget));
-            //actions.Items.Add(typeof(Nodes.ActionTakeStep));
+            actions.Items.Add(typeof(Nodes.ActionTakeStep));
             actions.Items.Add(typeof(Nodes.ActionThreatAware));
             actions.Items.Add(typeof(Nodes.ActionThreatEscalation));
             actions.Items.Add(typeof(Nodes.ActionTriggerSound));
@@ -290,10 +290,10 @@ namespace LegendPlugin
             decorators.Items.Add(typeof(Nodes.DecoratorAwarenessState));
             decorators.Items.Add(typeof(Nodes.DecoratorBranch));
             decorators.Items.Add(typeof(Nodes.DecoratorLockBestVents));
-            //decorators.Items.Add(typeof(Nodes.DecoratorLoop));
+            decorators.Items.Add(typeof(Nodes.DecoratorLoop));
             decorators.Items.Add(typeof(Nodes.DecoratorMood));
             decorators.Items.Add(typeof(Nodes.DecoratorPercentage));
-            //decorators.Items.Add(typeof(Nodes.DecoratorSetSenseSet));
+            decorators.Items.Add(typeof(Nodes.DecoratorSetSenseSet));
             decorators.Items.Add(typeof(Nodes.DecoratorSquadSearch));
             decorators.Items.Add(typeof(Nodes.DecoratorSuspiciousItemInProgress));
             decorators.Items.Add(typeof(Nodes.DecoratorTimer));

@@ -46,7 +46,7 @@ namespace LegendPlugin.Nodes
             set { _speed = value; }
         }
 
-        [DesignerString("Step type", "Step_Type", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        [DesignerEnum("Step type", "Step_Type", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
         public Step_Type AnimTreeEnum
         {
             get { return _type; }
