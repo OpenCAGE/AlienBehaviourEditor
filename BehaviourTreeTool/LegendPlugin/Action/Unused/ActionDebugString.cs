@@ -36,9 +36,25 @@ namespace LegendPlugin.Nodes
 {
     public class ActionDebugString : Action
     {
-        public ActionDebugString() : base(Resources.ActionDebugString, Resources.ActionDebugString)
+        private string _DebugString = "";
+
+        [DesignerString("Debug string", "DebugString", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string DebugString
         {
-            //Unknown parameters. Not used in final game.
+            get { return _DebugString; }
+            set { _DebugString = value; }
+        }
+
+        public ActionDebugString() : base("DebugString", "Output a debug string.")
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionDebugString cond = (ActionDebugString)newnode;
+            cond._DebugString = _DebugString;
         }
     }
 }

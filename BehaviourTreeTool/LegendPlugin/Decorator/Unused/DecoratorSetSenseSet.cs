@@ -35,11 +35,28 @@ using LegendPlugin.Properties;
 namespace LegendPlugin.Nodes
 {
 	public class DecoratorSetSenseSet : Decorator
-	{
+    {
+        protected SenseSet _type;
+
+        [DesignerEnum("Sense set", "SenseSet", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public SenseSet SenseSet
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
         public DecoratorSetSenseSet()
-            : base(Resources.DecoratorSetSenseSet, Resources.DecoratorSetSenseSet)
-		{
-            //Unknown parameters. Not used in final game.
+            : base("SetSenseSet", "Set the sense set for a decorated node - unused in the final game.")
+
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            DecoratorSetSenseSet cond = (DecoratorSetSenseSet)newnode;
+            cond._type = _type;
         }
     }
 }

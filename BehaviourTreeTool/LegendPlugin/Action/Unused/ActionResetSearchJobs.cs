@@ -36,9 +36,9 @@ namespace LegendPlugin.Nodes
 {
     public class ActionResetSearchJobs : Action
 	{
-        public ActionResetSearchJobs() : base(Resources.ActionResetSearchJobs, Resources.ActionResetSearchJobs)
+        public ActionResetSearchJobs() : base("ResetSearchJobs", "Reset our search jobs - unused in the final game.")
         {
-            //Unknown parameters. Not used in final game.
+            
         }
     }
 }

@@ -36,9 +36,35 @@ namespace LegendPlugin.Nodes
 {
     public class ActionTakeStep : Action
 	{
-        public ActionTakeStep() : base(Resources.ActionTakeStep, Resources.ActionTakeStep)
+        protected RequestShutDownSpeed _speed;
+        protected Step_Type _type;
+
+        [DesignerEnum("Request shutdown speed", "RequestShutDownSpeed", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public RequestShutDownSpeed RequestShutDownSpeed
         {
-            //Unknown parameters. Not used in final game.
+            get { return _speed; }
+            set { _speed = value; }
+        }
+
+        [DesignerString("Step type", "Step_Type", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public Step_Type AnimTreeEnum
+        {
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        public ActionTakeStep() : base("TakeStep", "Take a step in a direction - unused in the final game.")
+
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionTakeStep cond = (ActionTakeStep)newnode;
+            cond._type = _type;
+            cond._speed = _speed;
         }
     }
 }

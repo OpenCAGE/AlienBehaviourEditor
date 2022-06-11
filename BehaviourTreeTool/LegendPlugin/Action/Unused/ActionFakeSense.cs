@@ -35,10 +35,36 @@ using LegendPlugin.Properties;
 namespace LegendPlugin.Nodes
 {
     public class ActionFakeSense : Action
-	{
-        public ActionFakeSense() : base(Resources.ActionFakeSense, Resources.ActionFakeSense)
+    {
+        protected SenseType _type;
+        protected ThresholdQualifier _threshold;
+
+        [DesignerEnum("Sense type", "SenseType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public SenseType SenseType
         {
-            //Unknown parameters. Not used in final game.
+            get { return _type; }
+            set { _type = value; }
+        }
+        
+        [DesignerEnum("Threshold qualifier", "ThresholdQualifier", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public ThresholdQualifier ThresholdQualifier
+        {
+            get { return _threshold; }
+            set { _threshold = value; }
+        }
+
+        public ActionFakeSense() : base("FakeSense", "Fake a sense - unused in the final game.")
+        {
+            
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionFakeSense cond = (ActionFakeSense)newnode;
+            cond._type = _type;
+            cond._threshold = _threshold;
         }
     }
 }

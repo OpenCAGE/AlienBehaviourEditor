@@ -36,9 +36,62 @@ namespace LegendPlugin.Nodes
 {
     public class ActionIdleTimeFacingTargetSensedPosition : Action
 	{
-        public ActionIdleTimeFacingTargetSensedPosition() : base(Resources.ActionIdleTimeFacingTargetSensedPosition, Resources.ActionIdleTimeFacingTargetSensedPosition)
+        protected RequestShutDownSpeed _shutdownspeed;
+        protected string _time;
+        protected string _tolerance;
+        protected SenseType _sensetype;
+        protected ThresholdQualifier _threshold;
+
+        [DesignerEnum("Request shutdown speed", "RequestShutDownSpeed", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public RequestShutDownSpeed RequestShutDownSpeed
         {
-            //Unknown parameters. Not used in final game.
+            get { return _shutdownspeed; }
+            set { _shutdownspeed = value; }
+        }
+
+        [DesignerString("Time", "Time", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string Time
+        {
+            get { return _time; }
+            set { _time = value; }
+        }
+
+        [DesignerString("Facing tolerance", "FacingTolerance", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string FacingTolerance
+        {
+            get { return _tolerance; }
+            set { _tolerance = value; }
+        }
+
+        [DesignerEnum("Sense type", "SenseType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public SenseType SenseType
+        {
+            get { return _sensetype; }
+            set { _sensetype = value; }
+        }
+
+        [DesignerEnum("Threshold qualifier", "ThresholdQualifier", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public ThresholdQualifier ThresholdQualifier
+        {
+            get { return _threshold; }
+            set { _threshold = value; }
+        }
+
+        public ActionIdleTimeFacingTargetSensedPosition() : base("IdleTimeFacingTargetSensedPosition", "Idle for a set time while facing our target's sensed position - unused in the final game.")
+
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionIdleTimeFacingTargetSensedPosition cond = (ActionIdleTimeFacingTargetSensedPosition)newnode;
+            cond._shutdownspeed = _shutdownspeed;
+            cond._time = _time;
+            cond._tolerance = _tolerance;
+            cond._sensetype = _sensetype;
+            cond._threshold = _threshold;
         }
     }
 }

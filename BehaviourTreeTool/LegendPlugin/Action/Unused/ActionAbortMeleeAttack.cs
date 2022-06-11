@@ -36,9 +36,9 @@ namespace LegendPlugin.Nodes
     public class ActionAbortMeleeAttack : Action
 	{
         public ActionAbortMeleeAttack()
-            : base(Resources.ActionAbortMeleeAttack, Resources.ActionAbortMeleeAttack)
+            : base("AbortMeleeAttack", "Abort our melee attack - unused in the final game.")
 		{
-            //Unknown parameters. Not used in final game.
-		}
-	}
+            
+        }
+    }
 }

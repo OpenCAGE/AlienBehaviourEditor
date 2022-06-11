@@ -35,10 +35,27 @@ using LegendPlugin.Properties;
 namespace LegendPlugin.Nodes
 {
     public class ActionPauseSenses : Action
-	{
-        public ActionPauseSenses() : base(Resources.ActionPauseSenses, Resources.ActionPauseSenses)
+    {
+        private string _duration = "";
+
+        [DesignerString("Duration", "Duration", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string Duration
         {
-            //Unknown parameters. Not used in final game.
+            get { return _duration; }
+            set { _duration = value; }
+        }
+        
+        public ActionPauseSenses() : base("PauseSenses", "Pause our senses for a duration - unused in the final game.")
+        {
+
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionPauseSenses cond = (ActionPauseSenses)newnode;
+            cond._duration = _duration;
         }
     }
 }

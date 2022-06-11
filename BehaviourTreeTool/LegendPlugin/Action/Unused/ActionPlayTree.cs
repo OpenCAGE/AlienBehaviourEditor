@@ -36,9 +36,46 @@ namespace LegendPlugin.Nodes
 {
     public class ActionPlayTree : Action
 	{
-        public ActionPlayTree() : base(Resources.ActionPlayTree, Resources.ActionPlayTree)
+        protected RequestShutDownSpeed _type;
+        protected string _animEnum;
+        protected string _animCallback;
+
+        [DesignerEnum("Request shutdown speed", "RequestShutDownSpeed", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public RequestShutDownSpeed RequestShutDownSpeed
         {
-            //Unknown parameters. Not used in final game.
+            get { return _type; }
+            set { _type = value; }
         }
+
+        [DesignerString("Animation tree enum", "AnimTreeEnum", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string AnimTreeEnum
+        {
+            //STUN_DAMAGE_TREE, or NONE
+            get { return _animEnum; }
+            set { _animEnum = value; }
+        }
+
+        [DesignerString("Animation callback enum", "AnimCallbackEnum", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string AnimCallbackEnum
+        {
+            //STUN_DAMAGE_CALLBACK, or NONE
+            get { return _animCallback; }
+            set { _animCallback = value; }
+        }
+
+        public ActionPlayTree() : base("PlayTree", "Play an animation tree on us - unused in the final game.")
+
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionPlayTree cond = (ActionPlayTree)newnode;
+            cond._type = _type;
+            cond._animEnum = _animEnum;
+            cond._animCallback = _animCallback;
+        }        
     }
 }

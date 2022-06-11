@@ -37,9 +37,9 @@ namespace LegendPlugin.Nodes
 	public class DecoratorLoop : Decorator
 	{
         public DecoratorLoop()
-            : base(Resources.DecoratorLoop, Resources.DecoratorLoop)
+            : base("Loop", "DecoratorLoop - unused in the final game.")
         {
-            //Unknown parameters. Not used in final game.
+            
         }
     }
 }
