@@ -36,9 +36,26 @@ namespace LegendPlugin.Nodes
 {
     public class ActionForceSearch : Action
 	{
-        public ActionForceSearch() : base(Resources.ActionForceSearch, Resources.ActionForceSearch)
+        protected RequestShutDownSpeed _type;
+
+        [DesignerEnum("Request shutdown speed", "RequestShutDownSpeed", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
+        public RequestShutDownSpeed RequestShutDownSpeed
         {
-            //Unknown parameters. Not used in final game.
+            get { return _type; }
+            set { _type = value; }
+        }
+
+        public ActionForceSearch() : base("ForceSearch", "Force us to search - unused in the final game.")
+
+        {
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionForceSearch cond = (ActionForceSearch)newnode;
+            cond._type = _type;
         }
     }
 }

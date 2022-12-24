@@ -1,4 +1,4 @@
-﻿////////////////////////////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2009, Daniel Kollmann
 // All rights reserved.
 //
@@ -76,6 +76,9 @@ namespace LegendPlugin
 
     //Sense Type
     public enum SenseType { VISUAL, HEARD_COMBAT, HEARD_MOVEMENT=3, DAMAGED, TOUCHED, AFFECTED_BY_FLAME_THROWER, SEE_FLASH_LIGHT, COMBINED }
+
+    //Sense Set
+    public enum SenseSet { SET_1, SET_2, SET_3 } //TODO - i think this might be 0,2,3 - not 0,1,2
 
     //Threshold Qualifier
     public enum ThresholdQualifier { TRACE_THRESHOLD, LOWER_THRESHOLD, ACTIVATED_THRESHOLD, UPPER_THRESHOLD }
@@ -161,4 +164,7 @@ namespace LegendPlugin
 
     //Weapon Property
     public enum WeaponProperty { ALIEN_THREAT_AWARE_OF }
+
+    //Step Type
+    public enum Step_Type { FORWARD, BACK }
 }

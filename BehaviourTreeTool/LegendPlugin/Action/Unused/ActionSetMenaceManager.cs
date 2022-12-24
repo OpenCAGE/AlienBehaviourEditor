@@ -35,10 +35,45 @@ using LegendPlugin.Properties;
 namespace LegendPlugin.Nodes
 {
     public class ActionSetMenaceManager : Action
-	{
-        public ActionSetMenaceManager() : base(Resources.ActionSetMenaceManager, Resources.ActionSetMenaceManager)
+    {
+        private bool _isAggressive = false;
+        private bool _reset = false;
+        private string _fraction = "";
+
+        [DesignerBoolean("Aggressive menace", "AggressiveMenace", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public bool AggressiveMenace
         {
-            //Unknown parameters. Not used in final game.
+            get { return _isAggressive; }
+            set { _isAggressive = value; }
+        }
+
+        [DesignerBoolean("Reset menace gauge", "ResetMenaceGauge", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public bool ResetMenaceGauge
+        {
+            get { return _reset; }
+            set { _reset = value; }
+        }
+
+        [DesignerString("Progression fraction", "ProgressionFraction", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
+        public string ProgressionFraction
+        {
+            get { return _fraction; }
+            set { _fraction = value; }
+        }
+
+        public ActionSetMenaceManager() : base("SetMenaceManager", "Directly set values on the menace gauge manager system - unused in the final game.")
+        {
+            
+        }
+
+        protected override void CloneProperties(Node newnode)
+        {
+            base.CloneProperties(newnode);
+
+            ActionSetMenaceManager cond = (ActionSetMenaceManager)newnode;
+            cond._isAggressive = _isAggressive;
+            cond._reset = _reset;
+            cond._fraction = _fraction;
         }
     }
 }

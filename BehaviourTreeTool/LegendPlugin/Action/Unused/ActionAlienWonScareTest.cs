@@ -36,9 +36,9 @@ namespace LegendPlugin.Nodes
     public class ActionAlienWonScareTest : Action
 	{
         public ActionAlienWonScareTest()
-            : base(Resources.ActionAlienWonScareTest, Resources.ActionAlienWonScareTest)
+            : base("AlienWonScareTest", "The alien has won the 'scare test' - unused in the final game.")
         {
-            //Unknown parameters. Not used in final game.
+            
         }
     }
 }
