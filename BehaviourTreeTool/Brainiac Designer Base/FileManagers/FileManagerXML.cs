@@ -36,6 +36,7 @@ using Brainiac.Design.Attributes;
 using Brainiac.Design.Nodes;
 using System.Reflection;
 using Brainiac.Design.Properties;
+using CATHODE;
 
 namespace Brainiac.Design.FileManagers
 {
@@ -412,7 +413,16 @@ namespace Brainiac.Design.FileManagers
 				MakeWritable();
 
 				_xmlfile.Save(_filename);
-			}
+
+                BML compiled = new BML(SharedData.pathToAI + @"\DATA\BINARY_BEHAVIOR\_DIRECTORY_CONTENTS.BML");
+                string xml = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DIR>";
+                DirectoryInfo workingDirectoryInfo = new DirectoryInfo(SharedData.pathToBehaviourTrees);
+                foreach (FileInfo currentFile in workingDirectoryInfo.GetFiles())
+                    xml += "<File name=\"" + currentFile.Name.Substring(0, currentFile.Name.Length - 3) + "bml\">" + File.ReadAllText(currentFile.FullName).Substring(38) + "</File>"; //Add to file string
+                xml += "</DIR>";
+				compiled.Content.LoadXml(xml);
+				compiled.Save();
+            }
 			catch
 			{
 				_xmlfile.RemoveAll();
@@ -421,4 +431,10 @@ namespace Brainiac.Design.FileManagers
 			}
 		}
 	}
+
+    public static class SharedData
+    {
+        public static string pathToAI = "";
+        public static string pathToBehaviourTrees = "BEHAVIOUR_TREES/"; //Should match debug_workspaces.xml
+    }
 }

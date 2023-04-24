@@ -25,8 +25,10 @@
 // WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using Brainiac.Design.FileManagers;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Windows.Forms;
 
 namespace Brainiac.Design
@@ -37,9 +39,21 @@ namespace Brainiac.Design
 		/// The main entry point for the application.
 		/// </summary>
 		[STAThread]
-		static void Main()
-		{
-			Application.EnableVisualStyles();
+		static void Main(string[] args)
+        {
+			//Set paths
+            if (args.Length > 0 && args[0] == "-opencage") for (int i = 1; i < args.Length; i++) SharedData.pathToAI += args[i] + " ";
+            else SharedData.pathToAI = Environment.CurrentDirectory + " ";
+            SharedData.pathToAI = SharedData.pathToAI.Substring(0, SharedData.pathToAI.Length - 1);
+            //SharedData.pathToBehaviourTrees = SharedData.pathToAI + "/DATA/MODTOOLS/BEHAVIOUR_TREES/";
+
+            //Verify location
+            if (!File.Exists(SharedData.pathToAI + "/AI.exe")) throw new Exception("This tool was launched incorrectly, or was not placed within the Alien: Isolation directory.");
+
+            //Create required directories
+            if (!Directory.Exists(SharedData.pathToBehaviourTrees)) Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
+
+            Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 			Application.Run(new MainWindow());
 		}
