@@ -45,10 +45,13 @@
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.7.2\System.dll</HintPath>
     </Reference>
     <Reference Include="System.Core" />
+    <Reference Include="System.Xaml" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,64 +61,66 @@
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BehaviourPacker.cs">
+    <Compile Include="Landing.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="BehaviourPacker.Designer.cs">
-      <DependentUpon>BehaviourPacker.cs</DependentUpon>
+    <Compile Include="Landing.Designer.cs">
+      <DependentUpon>Landing.cs</DependentUpon>
     </Compile>
     <Compile Include="BML Scripts\AlienConverter.cs" />
     <Compile Include="BML Scripts\AlienString.cs" />
     <Compile Include="BML Scripts\BML.cs" />
+    <Compile Include="LandingWPF.xaml.cs">
+      <DependentUpon>LandingWPF.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SharedAssets\Fonts\FontManager.cs" />
-    <EmbeddedResource Include="BehaviourPacker.resx">
-      <DependentUpon>BehaviourPacker.cs</DependentUpon>
+    <EmbeddedResource Include="Landing.resx">
+      <DependentUpon>Landing.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
+    <Resource Include="Fonts\Isolation_Isolation.ttf" />
+    <Resource Include="Fonts\JixellationBold_Jixellation.ttf" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <EmbeddedResource Include="Reset Files\BINARY_BEHAVIOR\_DIRECTORY_CONTENTS.BML" />
-    <None Include="SharedAssets\.git" />
-    <EmbeddedResource Include="SharedAssets\Fonts\Isolation_Isolation.ttf" />
-    <EmbeddedResource Include="SharedAssets\Fonts\JixellationBold_Jixellation.ttf" />
-    <EmbeddedResource Include="SharedAssets\Fonts\NostromoBoldCond_Nostromo Cond.ttf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="icon.ico" />
-    <EmbeddedResource Include="SharedAssets\Images\ALIEN_DOORWAY-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\ANDROID_DOORWAY-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\CONNOR-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\KUHLMAN_DEATH-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\landing-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\loading_content.png" />
-    <EmbeddedResource Include="SharedAssets\Images\NPC_DOOR-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\SEEGSON_MAGAZINEMAN-min.png" />
-    <EmbeddedResource Include="SharedAssets\Images\TAYLOR-min.png" />
+    <Resource Include="Images\lambert-bg.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <Page Include="LandingWPF.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

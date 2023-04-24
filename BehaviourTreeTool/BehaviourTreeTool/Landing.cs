@@ -1,11 +1,4 @@
-﻿/*
- * 
- * Created by Matt Filer
- * www.mattfiler.co.uk
- * 
- */
-
-using System;
+﻿using System;
 using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
@@ -14,30 +7,28 @@ using System.Collections.Generic;
 
 namespace BehaviourTreeTool
 {
-    public partial class BehaviourPacker : Form
+    public partial class Landing : Form
     {
         /* ONLOAD */
-        public BehaviourPacker()
+        public Landing()
         {
             InitializeComponent();
             this.Focus();
         }
         private void BehaviourPacker_Load(object sender, EventArgs e)
         {
-            HeaderText.Font = FontManager.GetFont(1, 80);
-            HeaderText.Parent = HeaderImage;
-            Title4.Font = FontManager.GetFont(0, 20);
-            label1.Font = FontManager.GetFont(0, 20);
+            LandingWPF wpf = (LandingWPF)elementHost1.Child;
+            wpf.SetVersionInfo(ProductVersion);
+            wpf.OnEditorOpenRequest += UnpackTreesAndOpenEditor;
+            wpf.OnCompileRequest += CompileBehaviourTrees;
+            wpf.OnResetRequest += ResetBehaviourTrees;
         }
 
         /* UNPACK */
-        private void unpackButton_Click(object sender, EventArgs e)
+        private void UnpackTreesAndOpenEditor()
         {
             if (!Directory.Exists(SharedData.pathToBehaviourTrees)) Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
             if (!File.Exists(SharedData.pathToBehaviourTrees + "alien_all_search_variants.xml")) {
-                unpackButton.Enabled = false;
-                repackButton.Enabled = false;
-                resetTrees.Enabled = false;
                 Cursor.Current = Cursors.WaitCursor;
 
                 //Convert BML to XML
@@ -66,9 +57,6 @@ namespace BehaviourTreeTool
                 File.Delete(SharedData.pathToBehaviourTrees + "_DIRECTORY_CONTENTS.xml");
 
                 Cursor.Current = Cursors.Default;
-                unpackButton.Enabled = true;
-                repackButton.Enabled = true;
-                resetTrees.Enabled = true;
             }
 
             //Open Brainiac Designer
@@ -79,18 +67,15 @@ namespace BehaviourTreeTool
         }
 
         /* REPACK */
-        private void repackButton_Click(object sender, EventArgs e)
+        private void CompileBehaviourTrees()
         {
             if (!Directory.Exists(SharedData.pathToBehaviourTrees)) Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
             if (!File.Exists(SharedData.pathToBehaviourTrees + "alien_all_search_variants.xml"))
             {
-                MessageBox.Show("No modifications have been made! Nothing to import.");
+                MessageBox.Show("No modifications have been made! Nothing to import.", "No changes.", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
             {
-                unpackButton.Enabled = false;
-                repackButton.Enabled = false;
-                resetTrees.Enabled = false;
                 Cursor.Current = Cursors.WaitCursor;
 
                 //Create new XML to write
@@ -117,20 +102,14 @@ namespace BehaviourTreeTool
                 File.Delete(SharedData.pathToBehaviourTrees + "_DIRECTORY_CONTENTS.xml");
 
                 Cursor.Current = Cursors.Default;
-                unpackButton.Enabled = true;
-                repackButton.Enabled = true;
-                resetTrees.Enabled = true;
 
-                MessageBox.Show("Modifications have been imported.");
+                MessageBox.Show("Modifications have been imported.", "Import complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
         /* RESET */
-        private void resetTrees_Click(object sender, EventArgs e)
+        private void ResetBehaviourTrees()
         {
-            unpackButton.Enabled = false;
-            repackButton.Enabled = false;
-            resetTrees.Enabled = false;
             Cursor.Current = Cursors.WaitCursor;
 
             //Kill Brainiac
@@ -146,19 +125,8 @@ namespace BehaviourTreeTool
             }
 
             Cursor.Current = Cursors.Default;
-            unpackButton.Enabled = true;
-            repackButton.Enabled = true;
-            resetTrees.Enabled = true;
 
             MessageBox.Show("Behaviour trees have been reset to defaults!", "Reset complete.", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        //Close
-        private void CloseButton_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            Application.Exit();
-            Environment.Exit(0);
         }
     }
 }
