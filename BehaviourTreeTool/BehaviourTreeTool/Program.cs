@@ -33,15 +33,10 @@ namespace BehaviourTreeTool
             //Create required directories
             if (!Directory.Exists(SharedData.pathToBehaviourTrees)) Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
 
-            //Add font resources for use
-            FontManager.AddFont(Properties.Resources.Isolation_Isolation);
-            FontManager.AddFont(Properties.Resources.JixellationBold_Jixellation);
-            FontManager.AddFont(Properties.Resources.NostromoBoldCond_Nostromo_Cond);
-
             //Run app
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
-            Application.Run(new BehaviourPacker());
+            Application.Run(new Landing());
         }
     }
 }
