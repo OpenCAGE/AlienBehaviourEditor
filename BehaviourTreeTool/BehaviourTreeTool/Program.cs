@@ -21,22 +21,38 @@ namespace BehaviourTreeTool
         [STAThread]
         static void Main(string[] args)
         {
-            //Set paths
-            if (args.Length > 0 && args[0] == "-opencage") for (int i = 1; i < args.Length; i++) SharedData.pathToAI += args[i] + " ";
-            else SharedData.pathToAI = Environment.CurrentDirectory + " ";
-            SharedData.pathToAI = SharedData.pathToAI.Substring(0, SharedData.pathToAI.Length - 1);
-            //SharedData.pathToBehaviourTrees = SharedData.pathToAI + "/DATA/MODTOOLS/BEHAVIOUR_TREES/";
+            //Set path to AI
+            if (GetArgument("pathToAI") != null)
+                SharedData.pathToAI = GetArgument("pathToAI");
+            else
+                SharedData.pathToAI = Environment.CurrentDirectory;
+            SharedData.pathToBehaviourTrees = SharedData.pathToAI + "/DATA/MODTOOLS/BEHAVIOUR_TREES/";
 
             //Verify location
-            if (!File.Exists(SharedData.pathToAI + "/AI.exe")) throw new Exception("This tool was launched incorrectly, or was not placed within the Alien: Isolation directory.");
+            if (!File.Exists(SharedData.pathToAI + "/AI.exe")) 
+                throw new Exception("This tool was launched incorrectly, or was not placed within the Alien: Isolation directory.");
 
             //Create required directories
-            if (!Directory.Exists(SharedData.pathToBehaviourTrees)) Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
+            if (!Directory.Exists(SharedData.pathToBehaviourTrees)) 
+                Directory.CreateDirectory(SharedData.pathToBehaviourTrees);
 
             //Run app
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(true);
             Application.Run(new Landing());
+        }
+
+        static string GetArgument(string name)
+        {
+            string[] args = Environment.GetCommandLineArgs();
+            for (int i = 0; i < args.Length; i++)
+            {
+                if (args[i].Contains(name))
+                {
+                    return args[i + 1];
+                }
+            }
+            return null;
         }
     }
 }
