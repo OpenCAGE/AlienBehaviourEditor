@@ -45,7 +45,6 @@ namespace BehaviourTreeTool
                 SharedData.pathToAI = GetArgument("pathToAI");
             else
                 SharedData.pathToAI = Environment.CurrentDirectory;
-            SharedData.pathToBehaviourTrees = SharedData.pathToAI + "/DATA/MODTOOLS/BEHAVIOUR_TREES/";
 
             //Verify location
             if (!File.Exists(SharedData.pathToAI + "/AI.exe")) 
