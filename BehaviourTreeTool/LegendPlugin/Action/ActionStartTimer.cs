@@ -40,7 +40,7 @@ namespace LegendPlugin.Nodes
 
         private bool _OnlyIncreaseExistingEndTime = false;
         private string _cond4 = "";
-        protected TimerType _cond;
+        protected LOGIC_CHARACTER_TIMER_TYPE _cond;
 
         [DesignerBoolean("Only increase existing end time", "OnlyIncreaseExistingEndTime", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
         public bool OnlyIncreaseExistingEndTime
@@ -57,7 +57,7 @@ namespace LegendPlugin.Nodes
         }
 
         [DesignerEnum("Timer type", "TimerType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public TimerType TimerType
+        public LOGIC_CHARACTER_TIMER_TYPE TimerType
         {
             get { return _cond; }
             set { _cond = value; }

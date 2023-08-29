@@ -38,19 +38,19 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
         
-        protected AnimCallbackEnum _cond1;
-        protected AnimTreeEnum _cond2;
+        protected ANIM_CALLBACK_ENUM _cond1;
+        protected ANIM_TREE_ENUM _cond2;
         protected RequestShutDownSpeed _cond3;
 
         [DesignerEnum("Anim callback enum", "AnimCallbackEnum", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public AnimCallbackEnum AnimCallbackEnum
+        public ANIM_CALLBACK_ENUM AnimCallbackEnum
         {
             get { return _cond1; }
             set { _cond1 = value; }
         }
 
         [DesignerEnum("Anim tree enum", "AnimTreeEnum", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public AnimTreeEnum AnimTreeEnum
+        public ANIM_TREE_ENUM AnimTreeEnum
         {
             get { return _cond2; }
             set { _cond2 = value; }

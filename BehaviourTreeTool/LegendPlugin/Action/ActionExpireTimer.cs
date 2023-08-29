@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected TimerType _type;
+        protected LOGIC_CHARACTER_TIMER_TYPE _type;
 
         [DesignerEnum("Timer type", "TimerType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public TimerType TimerType
+        public LOGIC_CHARACTER_TIMER_TYPE TimerType
         {
             get { return _type; }
             set { _type = value; }

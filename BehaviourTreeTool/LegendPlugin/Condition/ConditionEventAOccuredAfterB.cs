@@ -38,11 +38,11 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected EventA _cond;
+        protected EVENT_OCCURED_TYPE _cond;
         protected EventB _cond2;
 
         [DesignerEnum("Event A", "EventA", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public EventA EventA
+        public EVENT_OCCURED_TYPE EventA
         {
             get { return _cond; }
             set { _cond = value; }

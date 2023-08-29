@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
     {
         //All parameters added
 
-        protected WeaponProperty _type;
+        protected WEAPON_PROPERTY _type;
 
         [DesignerEnum("Weapon property", "WeaponProperty", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public WeaponProperty WeaponProperty
+        public WEAPON_PROPERTY WeaponProperty
         {
             get { return _type; }
             set { _type = value; }

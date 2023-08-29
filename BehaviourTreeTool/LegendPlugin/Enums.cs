@@ -38,134 +38,529 @@ using System.Text;
 
 namespace LegendPlugin
 {
-    //Timer Type
-    public enum TimerType { SUSPECT_TARGET_RESPONSE_DELAY_TIMER, /*FIRST_LOGIC_CHARACTER_TIMER,*/ THREAT_AWARE_TIMEOUT_TIMER, THREAT_AWARE_DURATION_TIMER, SEARCH_TIMEOUT_TIMER, BACKSTAGE_STALK_TIMEOUT_TIMER, AMBUSH_TIMEOUT_TIMER, ATTACK_BAN_TIMER, MELEE_ATTACK_BAN_TIMER, VENT_BAN_TIMER, NPC_STAY_IN_COVER_SHOOT_TIMER, NPC_JUST_LEFT_COMBAT_TIMER, ATTACK_KEEP_CHASING_TIMER, DELAY_RETURN_TO_SPAWN_POINT_TIMER, TARGET_IN_CRAWLSPACE_TIMER, DURATION_SINCE_SEARCH_TIMER, HEIGHTENED_SENSES_TIMER, BACKSTAGE_STALK_PICK_KILLTRAP_TIMER, FLANKED_VENT_ATTACK_TIMER, THREAT_AWARE_VISUAL_RETENTION_TIMER, RESPONSE_TO_BACKSTAGE_ALIEN_TIMEOUT_TIMER, VENT_ATTRACT_TIMER, SEEN_PLAYER_AIM_WEAPON_TIMER, SEARCH_BAN_TIMER, OBSERVE_TARGET_TIMER, REPEATED_PATHFIND_FAILUREST_TIMER }
+    public enum BEHAVIOR_TREE_BRANCH_TYPE
+    {
+        NONE, //Unknown 0
+        CINEMATIC_BRANCH = 1,
+        ATTACK_BRANCH = 2,
+        AIM_BRANCH = 3,
+        DESPAWN_BRANCH = 4,
+        FOLLOW_BRANCH = 5,
+        STANDARD_BRANCH = 6,
+        SEARCH_BRANCH = 7,
+        AREA_SWEEP_BRANCH = 8,
+        BACKSTAGE_AREA_SWEEP_BRANCH = 9,
+        SHOT_BRANCH = 10,
+        SUSPECT_TARGET_RESPONSE_BRANCH = 11,
+        THREAT_AWARE_BRANCH = 12,
+        BACKSTAGE_AMBUSH_BRANCH = 13,
+        IDLE_JOB_BRANCH = 14,
+        USE_COVER_BRANCH = 15,
+        ASSAULT_BRANCH, //Unknown 16
+        MELEE_BRANCH = 17,
+        RETREAT_BRANCH = 18,
+        CLOSE_ON_TARGET_BRANCH = 19,
+        MUTUAL_MELEE_ONLY_BRANCH, //Unknown 20
+        VENT_MELEE_BRANCH = 21,
+        ASSAULT_NOT_ALLOWED_BRANCH, //Unknown 22
+        IN_VENT_BRANCH = 23,
+        CLOSE_COMBAT_BRANCH = 24,
+        DRAW_WEAPON_BRANCH = 25,
+        PURSUE_TARGET_BRANCH = 26,
+        RANGED_ATTACK_BRANCH, //Unknown 27
+        RANGED_COMBAT_BRANCH, //Unknown 28
+        PRIMARY_CONTROL_RESPONSE_BRANCH = 29,
+        DEAD_BRANCH = 30,
+        SCRIPT_BRANCH = 31,
+        IDLE_BRANCH = 32,
+        DOWN_BUT_NOT_OUT_BRANCH, //Unknown 33
+        MELEE_BLOCK_BRANCH, //Unknown 34
+        AGRESSIVE_BRANCH = 35,
+        ALERT_BRANCH = 36,
+        SHOOTING_BRANCH = 37,
+        REACT_TO_WEAPON_FIRE_BRANCH = 38,
+        IN_COVER_BRANCH = 39,
+        SUSPICIOUS_ITEM_BRANCH_HIGH = 40,
+        SUSPICIOUS_ITEM_BRANCH_MEDIUM = 41,
+        SUSPICIOUS_ITEM_BRANCH_LOW = 42,
+        AGGRESSION_ESCALATION_BRANCH = 43,
+        STUN_DAMAGE_BRANCH = 44,
+        BREAKOUT_BRANCH = 45,
+        SUSPEND_BRANCH = 46,
+        TARGET_IS_NPC_BRANCH = 47,
+        PLAYER_HIDING_BRANCH = 48,
+        ATTACK_CORE_BRANCH = 49,
+        CORPSE_TRAP_BRANCH = 50,
+        OBSERVE_TARGET_BRANCH = 51,
+        PANIC_BRANCH = 52,
+        TARGET_IN_CRAWLSPACE_BRANCH = 53,
+        KILLTRAP_BRANCH = 54,
+        MB_SUSPICIOUS_ITEM_ATLEAST_MOVE_CLOSE_TO = 55,
+        MB_THREAT_AWARE_ATTACK_TARGET_WITHIN_CLOSE_RANGE = 56,
+        MB_THREAT_AWARE_ATTACK_TARGET_WITHIN_VERY_CLOSE_RANGE = 57,
+        MB_THREAT_AWARE_ATTACK_TARGET_FLAMED_ME = 58,
+        MB_THREAT_AWARE_ATTACK_WEAPON_NOT_AIMED = 59,
+        MB_THREAT_AWARE_MOVE_TO_LOST_VISUAL = 60,
+        MB_THREAT_AWARE_MOVE_TO_BEFORE_ANIM = 61,
+        MB_THREAT_AWARE_MOVE_TO_AFTER_ANIM = 62,
+        MB_THREAT_AWARE_MOVE_TO_FLANKED_VENT = 63,
+        BACKSTAGE_ALIEN_RESPONSE_BRANCH = 64,
+        NPC_VS_ALIEN_BRANCH, //Unknown 65
+        USE_COVER_VS_ALIEN_BRANCH = 66,
+        IN_COVER_VS_ALIEN_BRANCH = 67,
+        REPEATED_PATHFIND_FAILS_BRANCH = 68,
+        ALL_SEARCH_VARIANTS_BRANCH, //Unknown 69
+    }
 
-    //Frame Flag
-    public enum FrameFlag { SUSPICIOUS_ITEM_LOW_PRIORITY, SUSPICIOUS_ITEM_MEDIUM_PRIORITY, SUSPICIOUS_ITEM_HIGH_PRIORITY, COULD_SEARCH, COULD_RESPOND_TO_HIDING_PLAYER, COULD_DO_SUSPICIOUS_ITEM_HIGH_PRIORITY, COULD_DO_SUSPECT_TARGET_RESPONSE_MOVE_TO }
+    public enum LOGIC_CHARACTER_TIMER_TYPE
+    {
+        SUSPECT_TARGET_RESPONSE_DELAY_TIMER = 0,
+        //FIRST_LOGIC_CHARACTER_TIMER
+        THREAT_AWARE_TIMEOUT_TIMER = 1,
+        THREAT_AWARE_DURATION_TIMER, //Unknown 2
+        SEARCH_TIMEOUT_TIMER, //Unknown 3
+        BACKSTAGE_STALK_TIMEOUT_TIMER = 4,
+        AMBUSH_TIMEOUT_TIMER = 5,
+        ATTACK_BAN_TIMER = 6,
+        MELEE_ATTACK_BAN_TIMER, //Unknown 7
+        VENT_BAN_TIMER = 8,
+        NPC_JUST_LEFT_COMBAT_TIMER = 9,
+        //Unknown 10
+        //Unknown 11
+        ATTACK_KEEP_CHASING_TIMER = 12,
+        DELAY_RETURN_TO_SPAWN_POINT_TIMER = 13,
+        TARGET_IN_CRAWLSPACE_TIMER = 14,
+        HEIGHTENED_SENSES_TIMER = 15,
+        BACKSTAGE_STALK_PICK_KILLTRAP_TIMER = 16,
+        FLANKED_VENT_ATTACK_TIMER = 17,
+        THREAT_AWARE_VISUAL_RETENTION_TIMER = 18,
+        RESPONSE_TO_BACKSTAGE_ALIEN_TIMEOUT_TIMER = 19,
+        VENT_ATTRACT_TIMER = 20,
+        SEEN_PLAYER_AIM_WEAPON_TIMER = 21,
+        SEARCH_BAN_TIMER = 22,
+        OBSERVE_TARGET_TIMER = 23,
+        REPEATED_PATHFIND_FAILUREST_TIMER = 24,
+    }
 
-    //Sound Type
-    public enum SoundType { ALIEN_AFFECTED_BY_FLAME_THROWER, ALIEN_ATTACK, ALIEN_BREATH_SLOW_LOOP, ALIEN_CHARGE_TO_ATTACK, ALIEN_DAMAGED_BY_FLAME_THROWER, ALIEN_DAMAGED_BY_ORDNANCE, ALIEN_SEARCHING, ALIEN_SEARCHING_FAIL, ALIEN_STALKING, ALIEN_STARTS_SEARCHING, ALIEN_SUSPECTS_TARGET }
+    public enum LOGIC_CHARACTER_FLAGS
+    {
+        DONE_BREAKOUT = 0,
+        SHOULD_RESET = 1,
+        //Unknown 2
+        //Unknown 3
+        SHOULD_BREAKOUT = 4,
+        SHOULD_ATTACK = 5,
+        SHOULD_HIT_AND_RUN = 6,
+        DONE_HIT_AND_RUN = 7,
+        PLAYER_HIDING = 8,
+        ATTACK_HIDING_PLAYER = 9,
+        ALIEN_ALWAYS_KNOWS_WHEN_IN_VENT = 10,
+        SHOULD_DESPAWN = 11,
+        ATTACK_HAS_GOT_WITHIN_ROUTING_THRESHOLD = 12,
+        LOCK_BACKSTAGE_STALK = 13,
+        DOING_THREAT_AWARE_ANIM = 14,
+        DONE_THREAT_AWARE = 15,
+        SHOULD_AMBUSH = 16,
+        PREVENT_GRAPPLES = 17,
+        PREVENT_ALL_ATTACKS, //Unknown 18
+        ALLOW_FLANKED_VENT_ATTACK = 19,
+        CLOSE_TO_BACKSTAGE_ALIEN = 20,
+        IS_IN_EXPLOITABLE_AREA = 21,
+        HAS_REPEATED_PATHFIND_FAILURES = 22,
+    }
 
-    //Withdraw State
-    public enum WithdrawState { NOT_WITHDRAWING, NEEDS_TO_WITHDRAW, WITHDRAWING }
+    public enum LOCOMOTION_TARGET_SPEED
+    {
+        Slowest = 0,
+        Slow = 1,
+        Fast = 2,
+        Fastest = 3,
+    }
 
-    //Flag Type
-    public enum FlagType { RETREAT_GAUGE, STUN_DAMAGE_GAUGE, LOGIC_CHARACTER_FLAGS, DONE_BREAKOUT, SHOULD_RESET, DO_ASSAULT_ATTACK_CHECKS, IS_IN_VENT, /* PLAYER_HIDING */ BANNED_FROM_VENT, PLAYER_HIDING, HAS_RECEIVED_DOT, IS_SITTING, DONE_ESCALATION_JOB, SHOULD_BREAKOUT, SHOULD_ATTACK, SHOULD_HIT_AND_RUN, DONE_HIT_AND_RUN, ATTACK_HIDING_PLAYER, ALIEN_ALWAYS_KNOWS_WHEN_IN_VENT, IS_CORPSE_TRAP_ON_START, SHOULD_DESPAWN, ATTACK_HAS_GOT_WITHIN_ROUTING_THRESHOLD, LOCK_BACKSTAGE_STALK, TOTALLY_BLIND_IN_DARK, PLAYER_WON_HIDING_QTE, ANDROID_IS_INERT, ANDROID_IS_SHOWROOM_DUMMY, SHOULD_AMBUSH, NEVER_AGGRESSIVE, MUTE_DYNAMIC_DIALOGUE, DOING_THREAT_AWARE_ANIM, DONE_THREAT_AWARE, BLOCK_AMBUSH_AND_KILLTRAPS, PREVENT_GRAPPLES, PREVENT_ALL_ATTACKS, ALLOW_FLANKED_VENT_ATTACK, IGNORE_PLAYER_IN_VENT_BEHAVIOUR, USE_AIMED_STANCE_FOR_IDLE_JOBS, USE_AIMED_LOW_STANCE_FOR_IDLE_JOBS, CLOSE_TO_BACKSTAGE_ALIEN, IS_IN_EXPLOITABLE_AREA, IS_ON_LADDER, HAS_REPEATED_PATHFIND_FAILURES }
+    public enum FRAME_FLAGS
+    {
+        SUSPICIOUS_ITEM_LOW_PRIORITY = 0,
+        SUSPICIOUS_ITEM_MEDIUM_PRIORITY = 1,
+        SUSPICIOUS_ITEM_HIGH_PRIORITY = 2,
+        COULD_SEARCH = 3,
+        COULD_RESPOND_TO_HIDING_PLAYER = 4,
+        COULD_DO_SUSPICIOUS_ITEM_HIGH_PRIORITY = 5,
+        COULD_DO_SUSPECT_TARGET_RESPONSE_MOVE_TO = 6,
+    }
 
-    //Shutdown Speed (requested)
-    public enum RequestShutDownSpeed { SST_GRACEFULL, SST_EXPEDIENT, SST_CRITICAL }
+    public enum EVENT_OCCURED_TYPE
+    {
+        SENSED_TARGET = 0,
+        SENSED_SUSPICIOUS_ITEM = 1,
+        TARGET_HIDEING = 2,
+        SUSPECT_TARGET_RESPONSE = 3,
+    }
 
-    //Vent Lock Reasoning
-    public enum VentLockReason { FLANKED_VENT_ATTACK_FROM_ATTACK, FLANKED_VENT_ATTACK_FROM_THREAT_AWARE }
+    public enum SUSPICIOUS_ITEM_BEHAVIOUR_TREE_PRIORITY
+    {
+        LOW = 0,
+        MEDIUM = 1,
+        HIGH = 2,
+    }
 
-    //Child State Type
-    public enum ChildStateType { CHILD_DEFAULT, IGNORE_CHILD_FAIL }
+    public enum ALIEN_DEVELOPMENT_MANAGER_ABILITIES
+    {
+        NONE, //Unknown 0
+        THREAT_AWARE = 1,
+        LIKES_TO_CLOSE_VIA_BACKSTAGE, //Unknown 2
+        WILL_KILLTRAP = 3,
+        WILL_FLANK = 4,
+        WILL_FLANK_FROM_THREAT_AWARE = 5,
+        WILL_AMBUSH = 6,
+        SEARCH_LOCKERS, //Unknown 7
+        SEARCH_UNDER_STUFF, //Unknown 8
+    }
 
-    //Branch Type
-    public enum BranchType { BEHAVIOR_TREE_BRANCH_TYPE, CINEMATIC_BRANCH, ATTACK_BRANCH, AIM_BRANCH, DESPAWN_BRANCH, FOLLOW_BRANCH, STANDARD_BRANCH, SEARCH_BRANCH, AREA_SWEEP_BRANCH, BACKSTAGE_AREA_SWEEP_BRANCH, SHOT_BRANCH, SUSPECT_TARGET_RESPONSE_BRANCH, THREAT_AWARE_BRANCH, BACKSTAGE_AMBUSH_BRANCH, IDLE_JOB_BRANCH, USE_COVER_BRANCH, ASSAULT_BRANCH, MELEE_BRANCH, RETREAT_BRANCH, CLOSE_ON_TARGET_BRANCH, MUTUAL_MELEE_ONLY_BRANCH, VENT_MELEE_BRANCH, ASSAULT_NOT_ALLOWED_BRANCH, IN_VENT_BRANCH, CLOSE_COMBAT_BRANCH, DRAW_WEAPON_BRANCH, PURSUE_TARGET_BRANCH, RANGED_ATTACK_BRANCH, RANGED_COMBAT_BRANCH, PRIMARY_CONTROL_RESPONSE_BRANCH, DEAD_BRANCH, SCRIPT_BRANCH, IDLE_BRANCH, DOWN_BUT_NOT_OUT_BRANCH, MELEE_BLOCK_BRANCH, AGRESSIVE_BRANCH, ALERT_BRANCH, SHOOTING_BRANCH, /*GRAPPLE_BREAK_BRANCH,*/
-        REACT_TO_WEAPON_FIRE_BRANCH, IN_COVER_BRANCH, SUSPICIOUS_ITEM_BRANCH_HIGH, SUSPICIOUS_ITEM_BRANCH_MEDIUM, SUSPICIOUS_ITEM_BRANCH_LOW, AGGRESSION_ESCALATION_BRANCH, STUN_DAMAGE_BRANCH, BREAKOUT_BRANCH, SUSPEND_BRANCH, TARGET_IS_NPC_BRANCH, PLAYER_HIDING_BRANCH, ATTACK_CORE_BRANCH, CORPSE_TRAP_BRANCH, OBSERVE_TARGET_BRANCH, TARGET_IN_CRAWLSPACE_BRANCH, MB_SUSPICIOUS_ITEM_ATLEAST_MOVE_CLOSE_TO, MB_THREAT_AWARE_ATTACK_TARGET_WITHIN_CLOSE_RANGE, MB_THREAT_AWARE_ATTACK_TARGET_WITHIN_VERY_CLOSE_RANGE, MB_THREAT_AWARE_ATTACK_TARGET_FLAMED_ME, MB_THREAT_AWARE_ATTACK_WEAPON_NOT_AIMED, MB_THREAT_AWARE_MOVE_TO_LOST_VISUAL, MB_THREAT_AWARE_MOVE_TO_BEFORE_ANIM, MB_THREAT_AWARE_MOVE_TO_AFTER_ANIM, MB_THREAT_AWARE_MOVE_TO_FLANKED_VENT, KILLTRAP_BRANCH, PANIC_BRANCH, BACKSTAGE_ALIEN_RESPONSE_BRANCH, NPC_VS_ALIEN_BRANCH, USE_COVER_VS_ALIEN_BRANCH, IN_COVER_VS_ALIEN_BRANCH, REPEATED_PATHFIND_FAILS_BRANCH, ALL_SEARCH_VARIANTS_BRANCH }
+    public enum VENT_LOCK_REASON
+    {
+        FLANKED_VENT_ATTACK_FROM_ATTACK = 0,
+        FLANKED_VENT_ATTACK_FROM_THREAT_AWARE = 1,
+    }
 
-    //Stages
-    public enum Stage { INITIAL_REACTION, WAIT_FOR_TEAM_MEMBERS_ROUTING, MOVE_CLOSE_TO, CLOSE_TO_REACTION, CLOSE_TO_WAIT_FOR_GROUP_MEMBERS, SEARCH_AREA }
+    public enum LOGIC_CHARACTER_GAUGE_TYPE
+    {
+        RETREAT_GAUGE = 0,
+        //Unknown 1   -- NOTE: I think this value was removed.
+        STUN_DAMAGE_GAUGE = 2,
+    }
 
-    //Awareness State
-    public enum AwarenessState { DEAD, STUNNED/* inferred position */, UNAWARE, SUSPICIOUS, SEARCHING_AREA, SEARCHING_LAST_SENSED, AWARE }
+    public enum ANIM_CALLBACK_ENUM
+    {
+        //NOTE: NONE is a value in code (-1?)
+        STUN_DAMAGE_CALLBACK = 0,
+    }
 
-    //Alertness State
-    public enum AlertnessState { IGNORE_PLAYER, ALERT, AGGRESSIVE }
+    public enum ANIM_TREE_ENUM
+    {
+        //NOTE: NONE is a value in code (-1?)
+        STUN_DAMAGE_TREE = 0,
+    }
 
-    //Sense Type
-    public enum SenseType { VISUAL, HEARD_COMBAT, HEARD_MOVEMENT=3, DAMAGED, TOUCHED, AFFECTED_BY_FLAME_THROWER, SEE_FLASH_LIGHT, COMBINED }
+    public enum WEAPON_PROPERTY
+    {
+        ALIEN_THREAT_AWARE_OF = 0,
+    }
 
-    //Sense Set
-    public enum SenseSet { SET_1, SET_2, SET_3 } //TODO - i think this might be 0,2,3 - not 0,1,2
+    public enum SUSPICIOUS_ITEM_STAGE
+    {
+        //NOTE: NONE is a value in code (-2?)
+        //NOTE: FIRST_SENSED is a value in code (-1?)
+        INITIAL_REACTION = 0,
+        WAIT_FOR_TEAM_MEMBERS_ROUTING = 1,
+        MOVE_CLOSE_TO = 2,
+        CLOSE_TO_REACTION = 3,
+        CLOSE_TO_WAIT_FOR_GROUP_MEMBERS = 4,
+        SEARCH_AREA = 5,
+    }
 
-    //Threshold Qualifier
-    public enum ThresholdQualifier { TRACE_THRESHOLD, LOWER_THRESHOLD, ACTIVATED_THRESHOLD, UPPER_THRESHOLD }
+    public enum SUSPICIOUS_ITEM_REACTION
+    {
+        INITIAL_REACTION = 0,
+        CLOSE_TO_FIRST_GROUP_MEMBER_REACTION = 1,
+        CLOSE_TO_SUBSEQUENT_GROUP_MEMBER_REACTION = 2,
+    }
 
-    //NPC Weapon Types
-    public enum Npc_Weapon_Type { WEAPON_TYPE_PROJECTILE, WEAPON_TYPE_MELEE, WEAPON_TYPE_ANY }
+    public enum NPC_COMBAT_STATE
+    {
+        NONE, //Unknown 0
+        WARNING = 1,
+        ATTACKING = 2,
+        REACHED_OBJECTIVE, //Unknown 3
+        ENTERED_COVER = 4,
+        LEAVE_COVER, //Unknown 5
+        START_RETREATING = 6,
+        REACHED_RETREAT, //Unknown 7
+        LOST_SENSE = 8,
+        SUSPICIOUS_WARNING = 9,
+        SUSPICIOUS_WARNING_FAILED = 10,
+        START_ADVANCE = 11,
+        DONE_ADVANCE, //Unknown 12
+        BLOCKING, //Unknown 13
+        HEARD_BS_ALIEN = 14,
+        ALIEN_SIGHTED = 15,
+    }
 
-    //Motivation Type
-    public enum MotivationType { CINEMATIC_MOTIVATION, ATTACK_MOTIVATION, AIM_MOTIVATION, DESPAWN_MOTIVATION, FOLLOW_MOTIVATION, STANDARD_MOTIVATION, SEARCH_SYSTEMATIC_MOTIVATION, STALK_MOTIVATION, BACKSTAGE_STALK_MOTIVATION, SHOT_MOTIVATION, SUSPECT_TARGET_RESPONSE_MOTIVATION, THREAT_AWARE_MOTIVATION, BACKSTAGE_AMBUSH_MOTIVATION, IDLE_JOB_MOTIVATION, USE_COVER_MOTIVATION, ASSAULT_MOTIVATION, MELEE_MOTIVATION, RETREAT_MOTIVATION, CLOSE_ON_TARGET_MOTIVATION, MUTUAL_MELEE_ONLY_MOTIVATION, VENT_MELEE_MOTIVATION, MULTIPLAYER_MOTIVATION, REACT_TO_WEAPON_MOTIVATION, SUSPICIOUS_ITEM_MOTIVATION, AGGRESSION_ESCALATION_MOTIVATION, STUN_DAMAGE_MOTIVATION, BREAKOUT_MOTIVATION, PLAYER_HIDE_MOTIVATION, OBSERVE_TARGET_MOTIVATION, ADVANCING_MOTIVATION, AMBUSH_MOTIVATION, PANIC_MOTIVATION, DEBUG_FORCE_CHARACTER_IDLE_MOTIVATION, BACKSTAGE_ALIEN_RESPONSE_MOTIVATION, ESCALATION_PREVENTS_SEARCH_MOTIVATION, ALIEN_ATTACK_MOTIVATION, ANDROID_ATTACK_MOTIVATION }
+    public enum CHARACTER_CLASS
+    {
+        PLAYER = 0,
+        ALIEN = 1,
+        ANDROID = 2,
+        CIVILIAN = 3,
+        SECURITY = 4,
+        FACEHUGGER, //Unknown 5
+        INNOCENT = 6,
+        ANDROID_HEAVY = 7,
+        MOTION_TRACKER, //Unknown 8
+        MELEE_HUMAN, //Unknown 9
+    }
 
-    //Attack Type
-    public enum AttackType { ANY, MELEE, GRAB/* inferred position */, VENT, TRAP}
+    public enum ALERTNESS_STATE
+    {
+        IGNORE_PLAYER = 0,
+        ALERT = 1,
+        AGGRESSIVE = 2,
+    }
 
-    //Objective Type
-    public enum ObjectiveType { OBJECTIVE_TYPE_MOVE, OBJECTIVE_TYPE_START_POS, OBJECTIVE_TYPE_COVER, OBJECTIVE_TYPE_SAFE_POINT }
+    public enum BEHAVIOUR_MOOD_SET
+    {
+        NEUTRAL = 0,
+        THREAT_ESCALATION_AGGRESSIVE = 1,
+        THREAT_ESCALATION_PANICKED, //Unknown 2
+        AGGRESSIVE = 3,
+        PANICKED = 4,
+        SUSPICIOUS = 5,
+    }
 
-    //Movement Speed
-    public enum MovementSpeedType { Slowest, Slow, Fast, Fastest }
+    public enum NPC_COVER_REQUEST_TYPE
+    {
+        DEFAULT = 0,
+        RETREAT = 1,
+        AGGRESSIVE = 2,
+        DEFENSIVE, //Unknown 3
+        ALIEN = 4,
+        PLAYER_IN_VENT = 5,
+    }
 
-    //Direction
-    public enum Direction { Forward, Back, Right, Left }
+    public enum AwarenessState
+    {
+        DEAD = 0,
+        STUNNED, //Unknown 1
+        UNAWARE = 2,
+        SUSPICIOUS = 3,
+        SEARCHING_AREA = 4,
+        SEARCHING_LAST_SENSED, //Unknown 5
+        AWARE = 6,
+    }
 
-    //Should Raise Gun?
-    public enum ShouldRaiseGun { GUN_RAISED, GUN_LOWERED }
+    public enum WithdrawState
+    {
+        NOT_WITHDRAWING = 0,
+        NEEDS_TO_WITHDRAW = 1,
+        WITHDRAWING = 2,
+    }
 
-    //Backstage Behaviour
-    public enum BackstageBehaviour { BACKSTAGE_ONLY, ALLOW_KILLTRAP }
+    public enum ChildStateType
+    {
+        CHILD_DEFAULT = 0,
+        IGNORE_CHILD_FAIL = 1,
+    }
 
-    //Combat State
-    public enum CombatState { NPC_COMBAT_STATE, WARNING, ATTACKING, REACHED_OBJECTIVE, ENTERED_COVER, LEAVE_COVER, START_RETREATING, REACHED_RETREAT, LOST_SENSE, SUSPICIOUS_WARNING, SUSPICIOUS_WARNING_FAILED, START_ADVANCE, DONE_ADVANCE, BLOCKING, HEARD_BS_ALIEN, ALIEN_SIGHTED }
+    public enum RoleType
+    {
+        IDLE = 0,
+        //Unknown 1
+        SYSTEMATIC_SEARCH = 2,
+        SYSTEMATIC_SEARCH_SUSPICIOUS_ITEM = 3,
+        STALK = 4,
+        //Unknown 5
+        //Unknown 6
+        //Unknown 7
+        //Unknown 8
+        BACKSTAGE_AMBUSH = 9,
+        //Unknown 10
+        HIDING_PLAYER = 11,
+        FOLLOW = 12,
+        SUSPECT_RESPONSE_MOVE_TO = 13,
+        PANIC = 14,
+    }
 
-    //Role Type
-    public enum RoleType { IDLE, DESPAWN, SYSTEMATIC_SEARCH, SYSTEMATIC_SEARCH_SUSPICIOUS_ITEM, STALK, BACKSTAGE_AMBUSH=9, HIDING_PLAYER=11, FOLLOW, SUSPECT_RESPONSE_MOVE_TO, PANIC }
+    public enum RequestShutDownSpeed
+    {
+        SST_GRACEFULL = 0,
+        SST_EXPEDIENT = 1,
+        SST_CRITICAL = 2,
+    }
 
-    //Anim Enums
-    public enum AnimCallbackEnum { STUN_DAMAGE_CALLBACK }
-    public enum AnimTreeEnum { STUN_DAMAGE_TREE }
+    public enum SenseType //SENSORY_TYPE?
+    {
+        VISUAL = 0,
+        HEARD_COMBAT = 1,
+        //Unknown 2
+        HEARD_MOVEMENT = 3,
+        DAMAGED = 4,
+        TOUCHED = 5,
+        AFFECTED_BY_FLAME_THROWER = 6,
+        SEE_FLASH_LIGHT = 7,
+        COMBINED = 8,
+    }
 
-    //Termination Condition
-    public enum TerminationCondition { Continuous, Shot_1=2, Shot_2, Shot_3, Shot_4, Random_between_1_and_4, Random_between_1_and_ClipCount }
+    public enum ThresholdQualifier
+    {
+        TRACE_THRESHOLD = 0,
+        LOWER_THRESHOLD = 1,
+        ACTIVATED_THRESHOLD = 2,
+        UPPER_THRESHOLD = 3,
+    }
 
-    //Request Type
-    public enum RequestType { DEFAULT, RETREAT, AGGRESSIVE, DEFENSIVE, ALIEN, PLAYER_IN_VENT }
+    public enum BackstageBehaviour
+    {
+        BACKSTAGE_ONLY = 0,
+        ALLOW_KILLTRAP = 1,
+    }
 
-    //Gauge Checks
-    public enum GaugeAmountType { GAUGE_NONE, GAUGE_TRACE, GAUGE_LOWER, GAUGE_ACTIVATED, GAUGE_UPPER, GAUGE_FULL }
-    public enum GaugeType { RETREAT_GAUGE, STUN_DAMAGE_GAUGE=2 }
+    public enum MotivationType
+    {
+        CINEMATIC_MOTIVATION = 0,
+        ATTACK_MOTIVATION = 1,
+        DESPAWN_MOTIVATION = 2,
+        //Unknown 3
+        //Unknown 4
+        SEARCH_SYSTEMATIC_MOTIVATION = 5,
+        STALK_MOTIVATION = 6,
+        BACKSTAGE_STALK_MOTIVATION = 7,
+        SHOT_MOTIVATION = 8,
+        SUSPECT_TARGET_RESPONSE_MOTIVATION = 9,
+        THREAT_AWARE_MOTIVATION = 10,
+        //Unknown 11
+        AIM_MOTIVATION = 12,
+        IDLE_JOB_MOTIVATION = 13,
+        USE_COVER_MOTIVATION = 14,
+        //Unknown 15
+        MELEE_MOTIVATION = 16,
+        RETREAT_MOTIVATION = 17,
+        //Unknown 18
+        MUTUAL_MELEE_ONLY_MOTIVATION = 19,
+        //Unknown 20
+        REACT_TO_WEAPON_MOTIVATION = 21,
+        SUSPICIOUS_ITEM_MOTIVATION = 22,
+        AGGRESSION_ESCALATION_MOTIVATION = 23,
+        STUN_DAMAGE_MOTIVATION = 24,
+        BREAKOUT_MOTIVATION = 25,
+        PLAYER_HIDE_MOTIVATION = 26,
+        OBSERVE_TARGET_MOTIVATION = 27,
+        //Unknown 28
+        AMBUSH_MOTIVATION = 29,
+        DEBUG_FORCE_CHARACTER_IDLE_MOTIVATION = 30,
+        PANIC_MOTIVATION = 31,
+        BACKSTAGE_ALIEN_RESPONSE_MOTIVATION = 32,
+    }
 
-    //Suspicious Item Reaction
-    public enum SuspiciousItemReaction { INITIAL_REACTION, CLOSE_TO_FIRST_GROUP_MEMBER_REACTION, CLOSE_TO_SUBSEQUENT_GROUP_MEMBER_REACTION }
+    public enum CharacterType
+    {
+        OWNER = 0,
+        TARGET = 1,
+        OWNER_AND_TARGET = 2,
+    }
 
-    //Should Weapon Equip?
-    public enum ShouldWeaponEquip { SHOULD_EQUIP, SHOULD_UNEQUIP }
+    public enum SoundType //TODO: there are more here in code.
+    {
+        //Unknown 0
+        //Unknown 1
+        //Unknown 2
+        ALIEN_CHARGE_TO_ATTACK = 3,
+        //Unknown 4
+        //Unknown 5
+        //Unknown 6
+        //Unknown 7
+        //Unknown 8
+        ALIEN_STARTS_SEARCHING = 9,
+    }
 
-    //Mood Set
-    public enum MoodSet { NEUTRAL, THREAT_ESCALATION_AGGRESSIVE, THREAT_ESCALATION_PANICKED, AGGRESSIVE, PANICKED, SUSPICIOUS }
+    public enum AttackType
+    {
+        ANY = 0,
+        //Unknown 1
+        //Unknown 2
+        VENT = 3,
+        TRAP = 4,
+    }
 
-    //Alien Action
-    public enum AlienAction { NONE, THREAT_AWARE, LIKES_TO_CLOSE_VIA_BACKSTAGE, WILL_KILLTRAP, WILL_FLANK, WILL_FLANK_FROM_THREAT_AWARE, WILL_AMBUSH, SEARCH_LOCKERS, SEARCH_UNDER_STUFF }
+    public enum TimeThreshold
+    {
+        //Unknown 0
+        TM_1 = 1,
+        TM_2 = 2,
+        TM_3 = 3,
+        //Unknown 4
+        TM_5 = 5,
+        TM_10 = 6,
+        //Unknown 7
+        TM_20 = 8,
+        //Unknown 9
+        TM_30 = 10,
+        //Unknown 11
+        TM_40 = 12,
+    }
 
-    //Events
-    public enum EventA { SENSED_TARGET, SENSED_SUSPICIOUS_ITEM, TARGET_HIDEING, SUSPECT_TARGET_RESPONSE }
-    public enum EventB { SENSED_TARGET, SENSED_SUSPICIOUS_ITEM, TARGET_HIDEING, SUSPECT_TARGET_RESPONSE }
+    public enum DistanceThreshold
+    {
+        //Unknown 0
+        //Unknown 1
+        DT_2 = 2,
+        //Unknown 3
+        DT_4 = 4,
+        DT_5 = 5,
+    }
 
-    //Characters
-    public enum CharacterClass { PLAYER, ALIEN, ANDROID, CIVILIAN, SECURITY, FACEHUGGER, INNOCENT, ANDROID_HEAVY }
-    public enum CharacterType { OWNER, TARGET, OWNER_AND_TARGET }
+    public enum GaugeAmountType
+    {
+        GAUGE_NONE = 0,
+        GAUGE_TRACE = 1,
+        GAUGE_LOWER = 2,
+        GAUGE_ACTIVATED = 3,
+        GAUGE_UPPER = 4,
+    }
 
-    //Combat Area Type
-    public enum CombatAreaType { COMBAT_AREA_DEFEND, COMBAT_AREA_PURSUIT }
+    public enum CombatAreaType
+    {
+        //Unknown 0
+        COMBAT_AREA_PURSUIT = 1,
+    }
 
-    //Weapon Range
-    public enum WeaponRange { WRT_TOO_CLOSE, WRT_EFFECTIVE_RANGE, WRT_MAX_RANGE, WRT_TOO_FAR, WRT_PREFERRED_RANGE }
+    public enum ObjectiveType
+    {
+        OBJECTIVE_TYPE_MOVE = 0,
+        OBJECTIVE_TYPE_START_POS = 1,
+        //Unknown 2
+        OBJECTIVE_TYPE_SAFE_POINT = 3,
+    }
 
-    //Time Threshold
-    public enum TimeThreshold { TM_0, TM_1, TM_2, TM_3, TM_4, TM_5, TM_10, TM_15, TM_20, TM_25, TM_30, TM_35, TM_40, TM_45, TM_50, TM_55, TM_60, TM_70, TM_80, TM_90, TM_100, TM_110, TM_120 }
+    public enum Npc_Weapon_Type
+    {
+        WEAPON_TYPE_ANY = 0,
+        WEAPON_TYPE_PROJECTILE = 1,
+        WEAPON_TYPE_MELEE = 2,
+    }
 
-    //Distance Threshold
-    public enum DistanceThreshold { DT_0, DT_1, DT_2, DT_3, DT_4, DT_5, DT_6, DT_7, DT_8, DT_9, DT_10, DT_12, DT_14, DT_16, DT_18, DT_20, DT_25, DT_30, DT_35, DT_40, DT_45, DT_50 }
+    public enum ShouldWeaponEquip
+    {
+        SHOULD_EQUIP = 0,
+        SHOULD_UNEQUIP = 1,
+    }
 
-    //Priority
-    public enum Priority { LOW, MEDIUM, HIGH }
+    public enum ShouldRaiseGun
+    {
+        GUN_RAISED = 0,
+        GUN_LOWERED = 1,
+    }
 
-    //Weapon Property
-    public enum WeaponProperty { ALIEN_THREAT_AWARE_OF }
+    public enum WeaponRange
+    {
+        //Unknown 0
+        //Unknown 1
+        WRT_MAX_RANGE = 2,
+    }
 
-    //Step Type
-    public enum Step_Type { FORWARD, BACK }
+    public enum TerminationCondition
+    {
+        Continuous = 0,
+        //Unknown 1
+        Shot_1 = 2,
+        //Unknown 3
+        //Unknown 4
+        //Unknown 5
+        Random_between_1_and_4 = 6,
+    }
+
+    public enum Direction
+    {
+        //Unknown 0
+        //Unknown 1
+        Right = 2,
+    }
 }

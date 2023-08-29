@@ -38,11 +38,11 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected CombatState _cond;
+        protected NPC_COMBAT_STATE _cond;
         protected TimeThreshold _cond2;
 
         [DesignerEnum("Combat state", "CombatState", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public CombatState CombatState
+        public NPC_COMBAT_STATE CombatState
         {
             get { return _cond; }
             set { _cond = value; }

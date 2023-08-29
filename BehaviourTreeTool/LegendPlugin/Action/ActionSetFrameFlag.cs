@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected FrameFlag _type;
+        protected FRAME_FLAGS _type;
 
         [DesignerEnum("Frame flag", "FrameFlag", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public FrameFlag FrameFlag
+        public FRAME_FLAGS FrameFlag
         {
             get { return _type; }
             set { _type = value; }

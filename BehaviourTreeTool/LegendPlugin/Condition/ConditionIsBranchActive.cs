@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected BranchType _type;
+        protected BEHAVIOR_TREE_BRANCH_TYPE _type;
 
         [DesignerEnum("Branch type", "BranchType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public BranchType BranchType
+        public BEHAVIOR_TREE_BRANCH_TYPE BranchType
         {
             get { return _type; }
             set { _type = value; }

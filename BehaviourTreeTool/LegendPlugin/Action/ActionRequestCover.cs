@@ -39,7 +39,7 @@ namespace LegendPlugin.Nodes
         //All parameters added
         
         private bool _InvalidateCurrentCover = false;
-        protected RequestType _cond;
+        protected NPC_COVER_REQUEST_TYPE _cond;
         private string _cond4 = "";
 
         [DesignerBoolean("Invalidate current cover", "InvalidateCurrentCover", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
@@ -57,7 +57,7 @@ namespace LegendPlugin.Nodes
         }
 
         [DesignerEnum("Request type", "RequestType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public RequestType RequestType
+        public NPC_COVER_REQUEST_TYPE RequestType
         {
             get { return _cond; }
             set { _cond = value; }
