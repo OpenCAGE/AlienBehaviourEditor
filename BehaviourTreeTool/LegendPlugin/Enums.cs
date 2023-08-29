@@ -392,6 +392,19 @@ namespace LegendPlugin
         SST_CRITICAL = 2,
     }
 
+    public enum SenseSet //TODO - i think this might be 0,2,3 - not 0,1,2
+    { 
+        SET_1, 
+        SET_2, 
+        SET_3
+    }
+
+    public enum Step_Type //TODO: ??
+    { 
+        FORWARD, 
+        BACK
+    }
+
     public enum SenseType //SENSORY_TYPE?
     {
         VISUAL = 0,
