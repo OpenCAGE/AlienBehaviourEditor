@@ -146,6 +146,17 @@ namespace LegendPlugin
     {
         DONE_BREAKOUT = 0,
         SHOULD_RESET = 1,
+
+        /*
+        DO_ASSAULT_ATTACK_CHECKS
+        IS_IN_VENT
+        BANNED_FROM_VENT
+        HAS_DONE_GRAPPLE_BREAK
+        HAS_RECEIVED_DOT
+        IS_SITTING
+        DONE_ESCALATION_JOB
+        */
+
         //Unknown 2
         //Unknown 3
         SHOULD_BREAKOUT = 4,
@@ -326,6 +337,11 @@ namespace LegendPlugin
         PLAYER_IN_VENT = 5,
     }
 
+
+    ///////////////////////////////////////////////////////////////
+    // Any below here I could not find the in-engine name for... //
+    ///////////////////////////////////////////////////////////////
+
     public enum AwarenessState
     {
         DEAD = 0,
@@ -353,7 +369,7 @@ namespace LegendPlugin
     public enum RoleType
     {
         IDLE = 0,
-        //Unknown 1
+        DESPAWN, //Unknown 1
         SYSTEMATIC_SEARCH = 2,
         SYSTEMATIC_SEARCH_SUSPICIOUS_ITEM = 3,
         STALK = 4,

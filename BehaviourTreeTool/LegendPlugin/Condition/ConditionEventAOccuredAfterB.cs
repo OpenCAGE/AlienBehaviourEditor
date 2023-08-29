@@ -39,7 +39,7 @@ namespace LegendPlugin.Nodes
         //All parameters added
 
         protected EVENT_OCCURED_TYPE _cond;
-        protected EventB _cond2;
+        protected EVENT_OCCURED_TYPE _cond2;
 
         [DesignerEnum("Event A", "EventA", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
         public EVENT_OCCURED_TYPE EventA
@@ -49,7 +49,7 @@ namespace LegendPlugin.Nodes
         }
 
         [DesignerEnum("Event B", "EventB", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public EventB EventB
+        public EVENT_OCCURED_TYPE EventB
         {
             get { return _cond2; }
             set { _cond2 = value; }
