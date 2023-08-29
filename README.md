@@ -1,9 +1,9 @@
-# Brainiac Designer & LegendPlugin
+# Alien Isolation Behaviour Tree Editor
 
-This repo includes Brainiac Designer and LegendPlugin, a Brainiac plugin for loading Alien: Isolation's behaviour trees.
+<img src="https://i.imgur.com/O4TkTKQ.png" align="right" width="40%">
 
-LegendPlugin was created by [Matt Filer](http://www.mattfiler.co.uk), while Brainiac was developed by [Daniel Kollmann](https://archive.codeplex.com/?p=brainiac).
+This is a project based on Brainiac Designer, which allows the modification of behaviour trees in Alien: Isolation.
 
-### Notes
+Created by [Matt Filer](http://www.mattfiler.co.uk) and [Daniel Kollmann](https://archive.codeplex.com/?p=brainiac).
 
-* The "WorkspaceDialog.cs" script in Brainiac has been edited on line 241 to suit use in OpenCAGE - remove this change for standalone use.
+The latest stable version can be found in the Build folder.
