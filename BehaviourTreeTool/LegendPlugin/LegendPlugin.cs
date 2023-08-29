@@ -51,19 +51,19 @@ namespace LegendPlugin
             /*
              * GROUPS
             */
-            NodeGroup actions = new NodeGroup(Resources.NodeGroupActions, NodeIcon.Action, null);
+            NodeGroup actions = new NodeGroup("Actions", NodeIcon.Action, null);
 			_nodeGroups.Add(actions);
 
-			NodeGroup conditions= new NodeGroup(Resources.NodeGroupConditions, NodeIcon.Condition, null);
+			NodeGroup conditions= new NodeGroup("Conditions", NodeIcon.Condition, null);
 			_nodeGroups.Add(conditions);
 
-			NodeGroup decorators= new NodeGroup(Resources.NodeGroupDecorators, NodeIcon.Decorator, null);
+			NodeGroup decorators= new NodeGroup("Decorators", NodeIcon.Decorator, null);
 			_nodeGroups.Add(decorators);
 
-			NodeGroup selectors= new NodeGroup(Resources.NodeGroupSelectors, NodeIcon.Selector, null);
+			NodeGroup selectors= new NodeGroup("Selectors", NodeIcon.Selector, null);
 			_nodeGroups.Add(selectors);
 
-			NodeGroup sequences= new NodeGroup(Resources.NodeGroupSequences, NodeIcon.Sequence, null);
+			NodeGroup sequences= new NodeGroup("Sequences", NodeIcon.Sequence, null);
 			_nodeGroups.Add(sequences);
 
 

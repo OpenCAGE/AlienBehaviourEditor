@@ -67,11 +67,6 @@ namespace Brainiac.Design
 		}
 
 		/// <summary>
-		/// Holds the instance of the error check dialogue for this view/behaviour.
-		/// </summary>
-		private static ErrorCheckDialog _errorCheckDialog= null;
-
-		/// <summary>
 		/// The node layout manager used to layout the behaviour and its children.
 		/// </summary>
 		private NodeLayoutManager _nodeLayoutManager;
@@ -1379,111 +1374,6 @@ namespace Brainiac.Design
 		/// The previous position of the check dialogue.
 		/// </summary>
 		private static Point _previousCheckDialogPosition;
-
-		/// <summary>
-		/// Handles when the check for errors button is pressed.
-		/// </summary>
-		private void checkButton_Click(object sender, EventArgs e)
-		{
-			// store the old position of the check dialogue and close it
-			if(_errorCheckDialog !=null)
-				_errorCheckDialog.Close();
-
-			// prepare the new dialogue
-			_errorCheckDialog= new ErrorCheckDialog();
-			_errorCheckDialog.BehaviorTreeList= _behaviorTreeList;
-			_errorCheckDialog.BehaviorTreeView= this;
-			_errorCheckDialog.Text= _rootNode.RootBehavior.GetPathLabel(_behaviorTreeList.BehaviorFolder) +" Error Check Results";
-			_errorCheckDialog.FormClosed+= new FormClosedEventHandler(errorCheckDialog_FormClosed);
-
-			// check the current behaviour for errors
-			List<Node.ErrorCheck> result= new List<Node.ErrorCheck>();
-			_rootNode.Node.CheckForErrors(_rootNode.RootBehavior, result);
-
-			// add the errors to the check dialogue
-			foreach(Node.ErrorCheck check in result)
-			{
-				BehaviorNode behavior= check.Node.Behavior;
-
-				// group the errors by the behaviour their occured in
-
-				// get the group for the error's behaviour
-				ListViewGroup group= null;
-				foreach(ListViewGroup grp in _errorCheckDialog.listView.Groups)
-				{
-					if(grp.Tag ==behavior)
-					{
-						group= grp;
-						break;
-					}
-				}
-
-				// if there is no group, create it
-				if(group ==null)
-				{
-					group= new ListViewGroup(behavior.GetPathLabel(_behaviorTreeList.BehaviorFolder));
-					group.Tag= behavior;
-					_errorCheckDialog.listView.Groups.Add(group);
-				}
-
-				// create an item for the error in the group
-				ListViewItem item= new ListViewItem(check.Description);
-				item.Group= group;
-				item.Tag= check.Node;
-
-				switch(check.Level)
-				{
-					case(ErrorCheckLevel.Message):
-						item.ImageIndex= 0;
-					break;
-
-					case(ErrorCheckLevel.Warning):
-						item.ImageIndex= 1;
-					break;
-
-					case(ErrorCheckLevel.Error):
-						item.ImageIndex= 2;
-					break;
-				}
-
-				_errorCheckDialog.listView.Items.Add(item);
-			}
-
-			// if no errors were found, tell the user so
-			if(result.Count <1)
-				_errorCheckDialog.listView.Items.Add( new ListViewItem("No Errors Found.", 0) );
-
-			// show the dialogue
-			_errorCheckDialog.Show();
-
-			// set its position to the position of the previous dialogue
-			if(_hasOldCheckDialogPosition)
-				_errorCheckDialog.Location= _previousCheckDialogPosition;
-		}
-
-		/// <summary>
-		/// Handles when the error check dialogue is closed
-		/// </summary>
-		void errorCheckDialog_FormClosed(object sender, FormClosedEventArgs e)
-		{
-			// store its previous position
-			_previousCheckDialogPosition= _errorCheckDialog.Location;
-			_hasOldCheckDialogPosition= true;
-
-			// we have to create a new dialogue the next time so we clear it
-			_errorCheckDialog= null;
-		}
-
-		/// <summary>
-		/// Handles when the export button is pressed
-		/// </summary>
-		private void exportButton_Click(object sender, EventArgs e)
-		{
-			if(_behaviorTreeList !=null)
-			{
-				_behaviorTreeList.ExportBehavior(_rootNode.RootBehavior);
-			}
-		}
 
 		/// <summary>
 		/// Handles when the save button is pressed.

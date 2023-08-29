@@ -55,35 +55,35 @@ namespace Brainiac.Design
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BehaviorTreeListDock));
-			this.behaviorTreeList = new Brainiac.Design.BehaviorTreeList();
-			this.SuspendLayout();
-			// 
-			// behaviorTreeList
-			// 
-			this.behaviorTreeList.BehaviorFolder = "";
-			this.behaviorTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.behaviorTreeList.Location = new System.Drawing.Point(0, 0);
-			this.behaviorTreeList.Name = "behaviorTreeList";
-			this.behaviorTreeList.Size = new System.Drawing.Size(284, 264);
-			this.behaviorTreeList.TabIndex = 1;
-			// 
-			// BehaviorTreeListDock
-			// 
-			this.ClientSize = new System.Drawing.Size(284, 264);
-			this.CloseButton = false;
-			this.CloseButtonVisible = false;
-			this.Controls.Add(this.behaviorTreeList);
-			this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft)
-						| WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight)
-						| WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop)
-						| WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom)));
-			this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-			this.Name = "BehaviorTreeListDock";
-			this.TabText = "Explorer";
-			this.Text = "Explorer";
-			this.ResumeLayout(false);
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BehaviorTreeListDock));
+            this.behaviorTreeList = new Brainiac.Design.BehaviorTreeList();
+            this.SuspendLayout();
+            // 
+            // behaviorTreeList
+            // 
+            this.behaviorTreeList.BehaviorFolder = "";
+            this.behaviorTreeList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.behaviorTreeList.Location = new System.Drawing.Point(0, 0);
+            this.behaviorTreeList.Name = "behaviorTreeList";
+            this.behaviorTreeList.Size = new System.Drawing.Size(284, 264);
+            this.behaviorTreeList.TabIndex = 1;
+            // 
+            // BehaviorTreeListDock
+            // 
+            this.ClientSize = new System.Drawing.Size(284, 264);
+            this.CloseButton = false;
+            this.CloseButtonVisible = false;
+            this.Controls.Add(this.behaviorTreeList);
+            this.DockAreas = ((WeifenLuo.WinFormsUI.Docking.DockAreas)(((((WeifenLuo.WinFormsUI.Docking.DockAreas.Float | WeifenLuo.WinFormsUI.Docking.DockAreas.DockLeft) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockRight) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockTop) 
+            | WeifenLuo.WinFormsUI.Docking.DockAreas.DockBottom)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.Name = "BehaviorTreeListDock";
+            this.TabText = "Explorer";
+            this.Text = "Explorer";
+            this.ResumeLayout(false);
 
 		}
 

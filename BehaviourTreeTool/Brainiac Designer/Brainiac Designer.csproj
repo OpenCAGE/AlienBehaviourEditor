@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Brainiac.Design</RootNamespace>
-    <AssemblyName>Brainiac Designer</AssemblyName>
+    <AssemblyName>BehaviourTreeEditor</AssemblyName>
     <SccProjectName>
     </SccProjectName>
     <SccLocalPath>
@@ -38,7 +38,8 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -48,6 +49,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -56,6 +58,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.VisualBasic" />
@@ -67,12 +70,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AboutBox.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="AboutBox.Designer.cs">
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </Compile>
     <Compile Include="BehaviorTreeList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -97,29 +94,14 @@
     <Compile Include="BehaviorTreeViewDock.Designer.cs">
       <DependentUpon>BehaviorTreeViewDock.cs</DependentUpon>
     </Compile>
+    <Compile Include="BML Scripts\AlienConverter.cs" />
+    <Compile Include="BML Scripts\AlienString.cs" />
+    <Compile Include="BML Scripts\BML.cs" />
     <Compile Include="DynamicPropertyGrid.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="DynamicPropertyGrid.designer.cs">
       <DependentUpon>DynamicPropertyGrid.cs</DependentUpon>
-    </Compile>
-    <Compile Include="EditWorkspaceDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="EditWorkspaceDialog.Designer.cs">
-      <DependentUpon>EditWorkspaceDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ErrorCheckDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ErrorCheckDialog.Designer.cs">
-      <DependentUpon>ErrorCheckDialog.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ExportDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ExportDialog.Designer.cs">
-      <DependentUpon>ExportDialog.cs</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.cs">
       <SubType>Form</SubType>
@@ -142,10 +124,6 @@
       <DependentUpon>PropertiesDock.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AboutBox.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>AboutBox.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="BehaviorTreeList.resx">
       <DependentUpon>BehaviorTreeList.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -166,18 +144,6 @@
       <DependentUpon>DynamicPropertyGrid.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="EditWorkspaceDialog.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>EditWorkspaceDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ErrorCheckDialog.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>ErrorCheckDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ExportDialog.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>ExportDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="MainWindow.resx">
       <SubType>Designer</SubType>
       <DependentUpon>MainWindow.cs</DependentUpon>
@@ -195,14 +161,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="SettingsDialog.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>SettingsDialog.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="WorkspaceDialog.resx">
-      <SubType>Designer</SubType>
-      <DependentUpon>WorkspaceDialog.cs</DependentUpon>
-    </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
@@ -217,19 +175,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="SettingsDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="SettingsDialog.Designer.cs">
-      <DependentUpon>SettingsDialog.cs</DependentUpon>
-    </Compile>
     <Compile Include="Workspace.cs" />
-    <Compile Include="WorkspaceDialog.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="WorkspaceDialog.Designer.cs">
-      <DependentUpon>WorkspaceDialog.cs</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Brainiac Designer Base\Brainiac Designer Base.csproj">
@@ -242,9 +188,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="icon.ico" />
     <None Include="app.config" />
-    <None Include="Resources\brain_logo_clean.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
@@ -272,6 +216,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icon.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

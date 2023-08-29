@@ -60,7 +60,6 @@ namespace Brainiac.Design
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.saveButton = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.checkButton = new System.Windows.Forms.Button();
             this.imageButton = new System.Windows.Forms.Button();
             this.propertiesButton = new System.Windows.Forms.Button();
             this.saveImageDialog = new System.Windows.Forms.SaveFileDialog();
@@ -77,7 +76,7 @@ namespace Brainiac.Design
             this.saveButton.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.saveButton.ImageIndex = 1;
             this.saveButton.ImageList = this.imageList;
-            this.saveButton.Location = new System.Drawing.Point(589, 3);
+            this.saveButton.Location = new System.Drawing.Point(610, 3);
             this.saveButton.Name = "saveButton";
             this.saveButton.Size = new System.Drawing.Size(59, 23);
             this.saveButton.TabIndex = 1;
@@ -98,21 +97,6 @@ namespace Brainiac.Design
             this.imageList.Images.SetKeyName(3, "check");
             this.imageList.Images.SetKeyName(4, "saveas");
             this.imageList.Images.SetKeyName(5, "properties");
-            // 
-            // checkButton
-            // 
-            this.checkButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.checkButton.Cursor = System.Windows.Forms.Cursors.Arrow;
-            this.checkButton.ImageIndex = 3;
-            this.checkButton.ImageList = this.imageList;
-            this.checkButton.Location = new System.Drawing.Point(679, 3);
-            this.checkButton.Name = "checkButton";
-            this.checkButton.Size = new System.Drawing.Size(23, 23);
-            this.checkButton.TabIndex = 4;
-            this.checkButton.TabStop = false;
-            this.toolTip.SetToolTip(this.checkButton, "Check Behavior for Errors");
-            this.checkButton.UseVisualStyleBackColor = true;
-            this.checkButton.Click += new System.EventHandler(this.checkButton_Click);
             // 
             // imageButton
             // 
@@ -135,7 +119,7 @@ namespace Brainiac.Design
             this.propertiesButton.Enabled = false;
             this.propertiesButton.ImageIndex = 5;
             this.propertiesButton.ImageList = this.imageList;
-            this.propertiesButton.Location = new System.Drawing.Point(654, 3);
+            this.propertiesButton.Location = new System.Drawing.Point(675, 3);
             this.propertiesButton.Name = "propertiesButton";
             this.propertiesButton.Size = new System.Drawing.Size(23, 23);
             this.propertiesButton.TabIndex = 0;
@@ -157,7 +141,6 @@ namespace Brainiac.Design
             this.BackColor = System.Drawing.Color.White;
             this.Controls.Add(this.propertiesButton);
             this.Controls.Add(this.imageButton);
-            this.Controls.Add(this.checkButton);
             this.Controls.Add(this.saveButton);
             this.Cursor = System.Windows.Forms.Cursors.Hand;
             this.DoubleBuffered = true;
@@ -175,7 +158,6 @@ namespace Brainiac.Design
 		private System.Windows.Forms.ToolTip toolTip;
 		private System.Windows.Forms.ImageList imageList;
 		private System.Windows.Forms.Button saveButton;
-		private System.Windows.Forms.Button checkButton;
 		private System.Windows.Forms.Button imageButton;
 		private System.Windows.Forms.SaveFileDialog saveImageDialog;
 		private System.Windows.Forms.Button propertiesButton;
