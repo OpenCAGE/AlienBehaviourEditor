@@ -244,6 +244,7 @@ namespace Brainiac.Design
 			{
 				// set the default behaviour folder
 				behaviorTreeList.BehaviorFolder= SharedData.pathToAI + "/DATA/BEHAVIOR"; //todo-mattf: this should load from AI folder
+				System.IO.File.WriteAllText("alien_path.txt", behaviorTreeList.BehaviorFolder);
 
 				// load the plugins
 				behaviorTreeList.LoadPlugins("LegendPlugin.dll");

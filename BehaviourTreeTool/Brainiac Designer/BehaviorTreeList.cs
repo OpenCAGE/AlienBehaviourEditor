@@ -232,7 +232,7 @@ namespace Brainiac.Design
 				return null;
 
 			// get the group for the behaviours
-			TreeNodeCollection list= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviors", _behaviorFolder).Nodes;
+			TreeNodeCollection list= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder).Nodes;
 
 			TreeNode group= null;
 			int count= isFile ? groups.Length -1 : groups.Length;  // if this is a file, skip the filename
@@ -298,7 +298,7 @@ namespace Brainiac.Design
 			if(identifier ==string.Empty)
 				return null;
 
-			TreeNode behaviors= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviors", _behaviorFolder);
+			TreeNode behaviors= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder);
 			return GetBehaviorNode(behaviors, identifier, isFilename);
 		}
 
@@ -316,7 +316,7 @@ namespace Brainiac.Design
 				Directory.CreateDirectory(_behaviorFolder);
 
 			// get the group for the behaviour and clear it from the old ones.
-			TreeNode behaviorTreeNode= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviors", _behaviorFolder);
+			TreeNode behaviorTreeNode= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder);
 			TreeNodeCollection behaviors= behaviorTreeNode.Nodes;
 			behaviors.Clear();
 
