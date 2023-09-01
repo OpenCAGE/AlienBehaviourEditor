@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected MoodSet _type;
+        protected BEHAVIOUR_MOOD_SET _type;
 
         [DesignerEnum("Mood set", "MoodSet", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public MoodSet MoodSet
+        public BEHAVIOUR_MOOD_SET MoodSet
         {
             get { return _type; }
             set { _type = value; }

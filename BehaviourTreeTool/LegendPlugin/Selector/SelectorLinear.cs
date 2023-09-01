@@ -38,16 +38,14 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
         
-        //private string _cond4 = "";
+        private string _cond4 = "";
 
-        /*
         [DesignerString("Name", "Name", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags)]
         public string Name
         {
             get { return _cond4; }
             set { _cond4 = value; }
         }
-        */
 
         public SelectorLinear()
             : base("Linear", "A LINEAR LOGIC SELECTOR BRANCH.")
@@ -60,7 +58,7 @@ namespace LegendPlugin.Nodes
             base.CloneProperties(newnode);
 
             SelectorLinear cond = (SelectorLinear)newnode;
-            //cond._cond4 = _cond4;
+            cond._cond4 = _cond4;
         }
     }
 }

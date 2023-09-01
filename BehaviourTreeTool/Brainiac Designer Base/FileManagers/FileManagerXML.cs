@@ -82,11 +82,22 @@ namespace Brainiac.Design.FileManagers
 		/// <param name="att">The name of the attribute we want.</param>
 		/// <param name="result">The value of the attribute found. Is string.Empty if the attribute does not exist.</param>
 		/// <returns>Returns true if the attribute exists.</returns>
+		private string alienPath = null;
 		protected bool GetAttribute(XmlNode node, string att, out string result)
 		{
+			if (alienPath == null)
+                alienPath = File.ReadAllText("alien_path.txt");
+
 			XmlNode value= node.Attributes.GetNamedItem(att);
 			if(value !=null && value.NodeType ==XmlNodeType.Attribute)
 			{
+				if (att == "ReferenceFilename")
+				{
+					string[] values = value.Value.Split('\\');
+					result = alienPath + "//" + values[values.Length - 1];
+					return true;
+                }
+
 				result= value.Value;
 				return true;
 			}
@@ -419,6 +430,6 @@ namespace Brainiac.Design.FileManagers
 
 				throw;
 			}
-		}
+        }
 	}
 }

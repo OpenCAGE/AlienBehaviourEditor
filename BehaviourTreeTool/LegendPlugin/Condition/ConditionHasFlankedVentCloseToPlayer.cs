@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected VentLockReason _cond;
+        protected VENT_LOCK_REASON _cond;
 
         [DesignerEnum("Vent lock reason", "VentLockReason", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public VentLockReason VentLockReason
+        public VENT_LOCK_REASON VentLockReason
         {
             get { return _cond; }
             set { _cond = value; }

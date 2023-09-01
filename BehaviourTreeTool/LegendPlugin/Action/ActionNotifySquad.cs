@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected CombatState _type;
+        protected NPC_COMBAT_STATE _type;
 
         [DesignerEnum("Combat state", "CombatState", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public CombatState CombatState
+        public NPC_COMBAT_STATE CombatState
         {
             get { return _type; }
             set { _type = value; }

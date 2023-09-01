@@ -38,10 +38,10 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected Stage _type;
+        protected SUSPICIOUS_ITEM_STAGE _type;
 
         [DesignerEnum("Stage", "Stage", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public Stage RequestShutDownSpeed
+        public SUSPICIOUS_ITEM_STAGE RequestShutDownSpeed
         {
             get { return _type; }
             set { _type = value; }

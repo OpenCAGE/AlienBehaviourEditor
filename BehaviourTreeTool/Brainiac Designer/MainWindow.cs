@@ -73,17 +73,6 @@ namespace Brainiac.Design
 
 			InitializeComponent();
 
-			// display the file version
-			string[] vernums= ProductVersion.Split('.');
-
-			Text+= " "+ vernums[0] +"."+ vernums[1];
-
-			if(vernums[2] !="0")
-				Text+= (char) (int.Parse(vernums[2]) +0x60);
-
-			if(vernums.Length >3 && vernums[3] !="0")
-				Text+= " ("+ vernums[3] +')';
-
 			// create docking panels
 			__dockPanel= dockPanel;
 
@@ -101,6 +90,9 @@ namespace Brainiac.Design
 			//_edgePenReadOnly.DashCap= System.Drawing.Drawing2D.DashCap.Round;
 			//_edgePenReadOnly.DashStyle= System.Drawing.Drawing2D.DashStyle.Dash;
 			//_edgePenReadOnly.DashPattern= new float[] { 4.0f, 3.0f };
+
+			this.BringToFront();
+			this.Focus();
 		}
 
 		/// <summary>
@@ -250,25 +242,12 @@ namespace Brainiac.Design
 
 			try
 			{
-				// let the user select the workspace
-				WorkspaceDialog dialog= new WorkspaceDialog();
-				DialogResult result= dialog.ShowDialog();
-				if(result ==DialogResult.Cancel)
-				{
-					Close();
-					return;
-				}
-
-				Workspace workspace= dialog.Workspace;
-
-				// set the default export folder
-				ExportDialog.LastUsedExportFolder= workspace.DefaultExportFolder;
-
 				// set the default behaviour folder
-				behaviorTreeList.BehaviorFolder= workspace.Folder;
+				behaviorTreeList.BehaviorFolder= SharedData.pathToAI + "/DATA/BEHAVIOR"; //todo-mattf: this should load from AI folder
+				System.IO.File.WriteAllText("alien_path.txt", behaviorTreeList.BehaviorFolder);
 
 				// load the plugins
-				behaviorTreeList.LoadPlugins("plugins", workspace.Plugins);
+				behaviorTreeList.LoadPlugins("LegendPlugin.dll");
 
 				// build list of behaviours
 				behaviorTreeList.RebuildBehaviorList();

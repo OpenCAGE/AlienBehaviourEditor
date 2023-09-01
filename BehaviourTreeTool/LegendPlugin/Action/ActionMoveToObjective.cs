@@ -39,7 +39,7 @@ namespace LegendPlugin.Nodes
         //All parameters added
 
         protected RequestShutDownSpeed _type;
-        protected MovementSpeedType _type2;
+        protected LOCOMOTION_TARGET_SPEED _type2;
         protected ObjectiveType _type3;
 
         [DesignerEnum("Request shutdown speed", "RequestShutDownSpeed", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
@@ -50,7 +50,7 @@ namespace LegendPlugin.Nodes
         }
 
         [DesignerEnum("Movement speed type", "MovementSpeedType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public MovementSpeedType VentLockReason
+        public LOCOMOTION_TARGET_SPEED VentLockReason
         {
             get { return _type2; }
             set { _type2 = value; }

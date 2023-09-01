@@ -39,10 +39,10 @@ namespace LegendPlugin.Nodes
         //All parameters added
 
         protected RequestShutDownSpeed _type;
-        protected VentLockReason _VentLockReason;
+        protected VENT_LOCK_REASON _VentLockReason;
 
         [DesignerEnum("Vent lock reason", "VentLockReason", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public VentLockReason VentLockReason
+        public VENT_LOCK_REASON VentLockReason
         {
             get { return _VentLockReason; }
             set { _VentLockReason = value; }

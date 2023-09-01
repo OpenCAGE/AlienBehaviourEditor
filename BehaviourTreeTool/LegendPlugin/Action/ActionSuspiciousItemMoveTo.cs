@@ -38,12 +38,12 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
         
-        protected MovementSpeedType _cond;
+        protected LOCOMOTION_TARGET_SPEED _cond;
         protected RequestShutDownSpeed _cond2;
         private bool _ShouldAim = false;
 
         [DesignerEnum("Movement speed type", "MovementSpeedType", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public MovementSpeedType MovementSpeedType
+        public LOCOMOTION_TARGET_SPEED MovementSpeedType
         {
             get { return _cond; }
             set { _cond = value; }

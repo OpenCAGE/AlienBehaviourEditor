@@ -38,18 +38,18 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected EventA _cond;
-        protected EventB _cond2;
+        protected EVENT_OCCURED_TYPE _cond;
+        protected EVENT_OCCURED_TYPE _cond2;
 
         [DesignerEnum("Event A", "EventA", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public EventA EventA
+        public EVENT_OCCURED_TYPE EventA
         {
             get { return _cond; }
             set { _cond = value; }
         }
 
         [DesignerEnum("Event B", "EventB", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public EventB EventB
+        public EVENT_OCCURED_TYPE EventB
         {
             get { return _cond2; }
             set { _cond2 = value; }

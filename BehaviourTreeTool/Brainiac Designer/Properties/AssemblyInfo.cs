@@ -32,12 +32,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Brainiac Designer")]
-[assembly: AssemblyDescription("Brainiac Designer allows you to create and edit behaviour trees.")]
+[assembly: AssemblyTitle("OpenCAGE Behaviour Tree Editor")]
+[assembly: AssemblyDescription("OpenCAGE Behaviour Tree Editor")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Brainiac Designer")]
-[assembly: AssemblyCopyright("Copyright © Daniel Kollmann 2009")]
+[assembly: AssemblyCopyright("Daniel Kollmann / Matt Filer")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -56,5 +56,5 @@ using System.Runtime.InteropServices;
 //      Build Number
 //      Revision
 //
-[assembly: AssemblyVersion("2.1.0.23357")]
-[assembly: AssemblyFileVersion("2.1.0.23357")]
+[assembly: AssemblyVersion("3.0.0.0")]
+[assembly: AssemblyFileVersion("3.0.0.0")]

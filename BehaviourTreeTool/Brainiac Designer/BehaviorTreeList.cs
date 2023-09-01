@@ -36,6 +36,8 @@ using System.IO;
 using System.Reflection;
 using Brainiac.Design.Nodes;
 using Brainiac.Design.Properties;
+using System.Xml;
+using BehaviourTreeTool;
 
 namespace Brainiac.Design
 {
@@ -47,8 +49,6 @@ namespace Brainiac.Design
 		public BehaviorTreeList()
 		{
 			InitializeComponent();
-
-			aiTypeComboBox.SelectedIndex= 0;
 
 			BehaviorManager.Instance= this;
 			AIType.SetProvider(this);
@@ -82,44 +82,30 @@ namespace Brainiac.Design
 		/// <summary>
 		/// Loads all plugins form a directory.
 		/// </summary>
-		/// <param name="path">The directory which is the root for the given list of plugins.</param>
-		/// <param name="files">The list of plugins which will be loaded from the given folder.</param>
-		internal void LoadPlugins(string path, IList<string> files)
+		/// <param name="dll">plugin dll name.</param>
+		internal void LoadPlugins(string dll)
 		{
-			// load DLLs
-			for(int i= 0; i <files.Count; ++i)
-			{
-				// load file
-				Assembly assembly= Assembly.LoadFile( Path.GetFullPath(path +'\\'+ files[i]) );
+			// load file
+			Assembly assembly= Assembly.LoadFile( Path.GetFullPath(dll) );
 
-				// create an instance of the plugin class of the same name as the file
-				string classname= Path.GetFileNameWithoutExtension(files[i]);
-				Plugin plugin= (Plugin) assembly.CreateInstance(classname +'.'+ classname);
+			// create an instance of the plugin class of the same name as the file
+			string classname= Path.GetFileNameWithoutExtension(dll);
+			Plugin plugin= (Plugin) assembly.CreateInstance(classname +'.'+ classname);
 
-				if(plugin ==null)
-					throw new Exception( string.Format(Resources.ExceptionCouldNotLoadPlugin, classname +'.'+ classname) );
+			if(plugin ==null)
+				throw new Exception( string.Format(Properties.Resources.ExceptionCouldNotLoadPlugin, classname +'.'+ classname) );
 
-				// register the plugin
-				Plugin.AddLoadedPlugin(assembly);
+			// register the plugin
+			Plugin.AddLoadedPlugin(assembly);
 
-				// add all file managers, exporters and AI types
-				_fileManagers.AddRange(plugin.FileManagers);
-				_exporters.AddRange(plugin.Exporters);
-				_aiTypes.AddRange(plugin.AITypes);
+			// add all file managers, exporters and AI types
+			_fileManagers.AddRange(plugin.FileManagers);
+			_exporters.AddRange(plugin.Exporters);
+			_aiTypes.AddRange(plugin.AITypes);
 
-				foreach(AIType aiType in plugin.AITypes)
-					aiTypeComboBox.Items.Add(aiType);
-
-				// create the tree nodes
-				foreach(NodeGroup group in plugin.NodeGroups)
-					group.Register(treeView.Nodes);
-			}
-
-			// check if we found any exporter
-			exportAllToolStripMenuItem.Enabled= _exporters.Count >0;
-
-			// check if we found any file managers
-			saveAllToolStripMenuItem.Enabled= _fileManagers.Count >0;
+			// create the tree nodes
+			foreach(NodeGroup group in plugin.NodeGroups)
+				group.Register(nodeTreeView.Nodes);
 		}
 
 		/// <summary>
@@ -246,7 +232,7 @@ namespace Brainiac.Design
 				return null;
 
 			// get the group for the behaviours
-			TreeNodeCollection list= GetBehaviorGroup(treeView.Nodes, "Behaviors", _behaviorFolder).Nodes;
+			TreeNodeCollection list= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder).Nodes;
 
 			TreeNode group= null;
 			int count= isFile ? groups.Length -1 : groups.Length;  // if this is a file, skip the filename
@@ -312,7 +298,7 @@ namespace Brainiac.Design
 			if(identifier ==string.Empty)
 				return null;
 
-			TreeNode behaviors= GetBehaviorGroup(treeView.Nodes, "Behaviors", _behaviorFolder);
+			TreeNode behaviors= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder);
 			return GetBehaviorNode(behaviors, identifier, isFilename);
 		}
 
@@ -330,7 +316,7 @@ namespace Brainiac.Design
 				Directory.CreateDirectory(_behaviorFolder);
 
 			// get the group for the behaviour and clear it from the old ones.
-			TreeNode behaviorTreeNode= GetBehaviorGroup(treeView.Nodes, "Behaviors", _behaviorFolder);
+			TreeNode behaviorTreeNode= GetBehaviorGroup(behaviourTreeView.Nodes, "Behaviours", _behaviorFolder);
 			TreeNodeCollection behaviors= behaviorTreeNode.Nodes;
 			behaviors.Clear();
 
@@ -416,7 +402,8 @@ namespace Brainiac.Design
 
 			// gather all tree nodes
 			List<TreeNode> nodes= new List<TreeNode>();
-			AddChildNodes(treeView.Nodes, nodes);
+			AddChildNodes(behaviourTreeView.Nodes, nodes);
+			AddChildNodes(nodeTreeView.Nodes, nodes);
 
 			// if there is no tree node, simply output the first available name
 			if(nodes.Count <1)
@@ -500,7 +487,7 @@ namespace Brainiac.Design
 					{
 						// check if the file exists
 						if(!File.Exists(filename))
-							throw new Exception( string.Format(Resources.ExceptionNoSuchFile, filename) );
+							throw new Exception( string.Format(Properties.Resources.ExceptionNoSuchFile, filename) );
 
 						// create a new file manager and load the behaviour
 						filemanager= info.Create(filename, null);
@@ -667,8 +654,9 @@ namespace Brainiac.Design
 		private delegate void SortTreeDelegate();
 		private void SortTree()
 		{
-			treeView.Sort();
-		}
+			behaviourTreeView.Sort();
+			nodeTreeView.Sort();
+        }
 
 		/// <summary>
 		/// Handles when a tree node is dragged from the node explorer
@@ -914,7 +902,32 @@ namespace Brainiac.Design
 			if(currNode !=null)
 				ShowBehavior(currNode);
 
-			return node.FileManager.Filename;
+			//Now the XML has been saved, compile them all into one
+            DirectoryInfo XMLFiles = new DirectoryInfo(SharedData.pathToAI + "/DATA/BEHAVIOR");
+            string XMLContent = "<?xml version=\"1.0\" encoding=\"utf-8\"?><DIR>";
+            foreach (FileInfo currentFile in XMLFiles.GetFiles())
+            {
+				string fileContents = File.ReadAllText(currentFile.FullName);
+                string fileName = currentFile.Name;
+				string customFileHeader = "<File name=\"" + fileName.Substring(0, fileName.Length - 3).ToUpper() + "bml\">";
+                string customFileFooter = "</File>"; 
+
+                XMLContent += customFileHeader + fileContents.Substring(38) + customFileFooter; 
+            }
+            XMLContent += "</DIR>";
+
+            //Write and convert to BML
+            string BinaryPrefix = SharedData.pathToAI + "/DATA/BINARY_BEHAVIOR/_DIRECTORY_CONTENTS.";
+            string XMLOutputFile = BinaryPrefix + "XML";
+            string BMLOutputFile = BinaryPrefix + "BML";
+
+            File.WriteAllText(XMLOutputFile, XMLContent);
+			if (File.Exists(BMLOutputFile)) 
+				File.Delete(BMLOutputFile);
+            new AlienConverter(XMLOutputFile, BMLOutputFile).Run();
+            File.Delete(XMLOutputFile);
+
+            return node.FileManager.Filename;
 		}
 
 		/// <summary>
@@ -1054,18 +1067,18 @@ namespace Brainiac.Design
 		private void createGroupButton_Click(object sender, EventArgs e)
 		{
 			// if no tree node is selected we do not know where to create the new folder
-			if(treeView.SelectedNode ==null)
+			if(behaviourTreeView.SelectedNode ==null)
 				return;
 
 			// we can only create folders for behaviours and folders
-			NodeTag nodetag= (NodeTag) treeView.SelectedNode.Tag;
+			NodeTag nodetag= (NodeTag) behaviourTreeView.SelectedNode.Tag;
 			if(nodetag.Type !=NodeTagType.Behavior && nodetag.Type !=NodeTagType.BehaviorFolder)
 				return;
 
 			try
 			{
 				// if the selected tree node is a behaviour we use its folder
-				TreeNode folder= nodetag.Type ==NodeTagType.BehaviorFolder ? treeView.SelectedNode : treeView.SelectedNode.Parent;
+				TreeNode folder= nodetag.Type ==NodeTagType.BehaviorFolder ? behaviourTreeView.SelectedNode : behaviourTreeView.SelectedNode.Parent;
 				nodetag= (NodeTag) folder.Tag;
 
 				// create a unique node name the the name of the folder
@@ -1084,7 +1097,7 @@ namespace Brainiac.Design
 				folder.Expand();
 
 				// selected the new node
-				treeView.SelectedNode= newnode;
+				behaviourTreeView.SelectedNode= newnode;
 
 				// allow the user to define a custom name
 				newnode.BeginEdit();
@@ -1104,9 +1117,9 @@ namespace Brainiac.Design
 		private void treeView_KeyDown(object sender, KeyEventArgs e)
 		{
 			// if the F2 key is pressed and a node is selected which is not currently edited, edit the nodes label
-			if(e.KeyCode ==Keys.F2 && treeView.SelectedNode !=null && !treeView.SelectedNode.IsEditing)
+			if(e.KeyCode ==Keys.F2 && behaviourTreeView.SelectedNode !=null && !behaviourTreeView.SelectedNode.IsEditing)
 			{
-				treeView.SelectedNode.BeginEdit();
+				behaviourTreeView.SelectedNode.BeginEdit();
 			}
 				// delete the current tree node
 			else if(e.KeyCode ==Keys.Delete)
@@ -1124,11 +1137,11 @@ namespace Brainiac.Design
 				throw new Exception("Missing event handler ClearBehaviors");
 
 			// if no tree node is selected we have nothing to delete
-			if(treeView.SelectedNode ==null)
+			if(behaviourTreeView.SelectedNode ==null)
 				return;
 
 			// we may only delete behaviours and folders.
-			NodeTag nodetag= (NodeTag) treeView.SelectedNode.Tag;
+			NodeTag nodetag= (NodeTag) behaviourTreeView.SelectedNode.Tag;
 			if(nodetag.Type !=NodeTagType.Behavior && nodetag.Type !=NodeTagType.BehaviorFolder)
 				return;
 
@@ -1140,7 +1153,7 @@ namespace Brainiac.Design
 				// check if we delete a bhevaiour
 				if(nodetag.Type ==NodeTagType.Behavior)
 				{
-					BehaviorNode node= GetBehavior(nodetag, treeView.SelectedNode.Text);
+					BehaviorNode node= GetBehavior(nodetag, behaviourTreeView.SelectedNode.Text);
 					if(node !=null)
 						behaviors.Add(node);
 				}
@@ -1180,7 +1193,7 @@ namespace Brainiac.Design
 				// if there was no error remove the tree node and delete the selected path
 				if(!error)
 				{
-					treeView.SelectedNode.Remove();
+					behaviourTreeView.SelectedNode.Remove();
 
 					if(nodetag.Filename !=string.Empty)
 						Microsoft.VisualBasic.FileIO.FileSystem.DeleteFile(nodetag.Filename, Microsoft.VisualBasic.FileIO.UIOption.AllDialogs, Microsoft.VisualBasic.FileIO.RecycleOption.SendToRecycleBin);
@@ -1356,105 +1369,6 @@ namespace Brainiac.Design
 		}
 
 		/// <summary>
-		/// Shows the export dialogue for the behaviours to be exported.
-		/// </summary>
-		/// <param name="node">The behaviour you want to export. Use null to export all behaviours.</param>
-		/// <returns>Returns true if the user did not abort and all behaviours could be exported.</returns>
-		internal bool ExportBehavior(BehaviorNode node)
-		{
-			// create export dialogue
-			ExportDialog dialog= new ExportDialog();
-
-			// get the behaviours tree node from the node explorer
-			TreeNodeCollection behaviors= GetBehaviorGroup(treeView.Nodes, "Behaviors", _behaviorFolder).Nodes;
-
-			// copy the behaviour tree nodes to the export dialogue, check them accordingly and expand them all
-			CopyTreeNodes(behaviors, dialog.treeView.Nodes);
-			CheckExportTreeNodes(dialog.treeView.Nodes, node);
-			dialog.treeView.ExpandAll();
-
-			// add all valid exporters to the format combo box
-			foreach(ExporterInfo info in _exporters)
-			{
-				if(node !=null || info.MayExportAll)
-					dialog.formatComboBox.Items.Add(info);
-			}
-
-			// if no valid exporter could be found we fail
-			if(dialog.formatComboBox.Items.Count <1)
-				return false;
-
-			// if no specific behaviour is to be exported the user may select which ones he wants to export.
-			if(node !=null)
-				dialog.treeView.Enabled= false;
-
-			// select first available exporter
-			dialog.formatComboBox.SelectedIndex= 0;
-
-			// show the dialogue
-			if(dialog.ShowDialog() ==DialogResult.Cancel)
-				return false;
-
-			try
-			{
-				// remove invalid characters from the selected export folder
-				dialog.textBox.Text= dialog.textBox.Text.Trim();
-
-				if(dialog.textBox.Text.Length <1)
-					throw new Exception("No export folder specified.");
-
-				if(!Directory.Exists(dialog.textBox.Text))
-					Directory.CreateDirectory(dialog.textBox.Text);
-					//throw new Exception("Selected directory does not exist.");
-
-				if(dialog.textBox.Text.StartsWith(_behaviorFolder, StringComparison.CurrentCultureIgnoreCase))
-					throw new Exception("Behaviors cannot be exported into the behaviors source folder.");
-
-				// retieve the correct exporter info
-				ExporterInfo exporter= _exporters[dialog.formatComboBox.SelectedIndex];
-
-				// export the selected behaviours
-				ExportBehavior(dialog.treeView.Nodes, dialog.textBox.Text, dialog.groupsCheckBox.Checked, exporter);
-			}
-			catch(Exception ex) { MessageBox.Show(ex.Message, "Export Error", MessageBoxButtons.OK); return false; }
-
-			return true;
-		}
-
-		/// <summary>
-		/// Handles when the export all menu item is clicked.
-		/// </summary>
-		private void exportAllToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			ExportBehavior(null);
-		}
-
-		/// <summary>
-		/// Handles when the about menu item is clicked.
-		/// </summary>
-		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			AboutBox box= new AboutBox();
-			box.ShowDialog();
-		}
-
-		/// <summary>
-		/// Handles when the get support menu item is clicked.
-		/// </summary>
-		private void reportAProblemToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			System.Diagnostics.Process.Start("http://www.codeplex.com/brainiac/Thread/List.aspx");
-		}
-
-		/// <summary>
-		/// Handles when the get latest version menu item is clicked.
-		/// </summary>
-		private void getLatestVersionToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			System.Diagnostics.Process.Start("https://www.codeplex.com/Release/ProjectReleases.aspx?ProjectName=brainiac");
-		}
-
-		/// <summary>
 		/// Handles when double-clicking an error in the check for errors dialogue.
 		/// </summary>
 		/// <param name="node">The node you want to show.</param>
@@ -1480,20 +1394,5 @@ namespace Brainiac.Design
 
 			return null;
 		}
-
-		private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			new SettingsDialog().ShowDialog();
-		}
-
-		private void aiTypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-			_currentAIType= aiTypeComboBox.SelectedItem as AIType;
-
-			foreach(BehaviorTreeViewDock btvd in BehaviorTreeViewDock.Instances)
-				btvd.BehaviorTreeView.UpdateLayout();
-
-			PropertiesDock.UpdatePropertyGrids();
-		}
-	}
+    }
 }

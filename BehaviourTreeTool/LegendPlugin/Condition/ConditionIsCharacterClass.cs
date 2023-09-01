@@ -38,11 +38,11 @@ namespace LegendPlugin.Nodes
 	{
         //All parameters added
 
-        protected CharacterClass _cond;
+        protected CHARACTER_CLASS _cond;
         protected CharacterType _cond2;
 
         [DesignerEnum("Character class", "CharacterClass", "CategoryBasic", DesignerProperty.DisplayMode.Parameter, 0, DesignerProperty.DesignerFlags.NoFlags, null)]
-        public CharacterClass CharacterClass
+        public CHARACTER_CLASS CharacterClass
         {
             get { return _cond; }
             set { _cond = value; }

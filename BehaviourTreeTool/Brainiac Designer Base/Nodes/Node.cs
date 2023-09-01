@@ -618,7 +618,7 @@ namespace Brainiac.Design.Nodes
 			_minWidth= minWidth;
 			_minHeight= minHeight;
 
-			_description= description;
+			_description= label;
 
 			if(defaultStyle ==null)
 				throw new Exception(Resources.ExceptionDefaultStyleNull);
