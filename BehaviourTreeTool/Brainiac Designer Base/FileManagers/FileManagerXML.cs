@@ -305,7 +305,15 @@ namespace Brainiac.Design.FileManagers
 			{
 				_xmlfile.Load(_filename);
 
-				XmlNode root= _xmlfile.ChildNodes[1].ChildNodes[0];
+				XmlNode root;
+				try
+				{
+                    root = _xmlfile.ChildNodes[1].ChildNodes[0];
+                }
+				catch
+				{
+                    root = _xmlfile.ChildNodes[0].ChildNodes[0];
+                }
 
 				_node= (BehaviorNode) CreateNode(root);
 				_node.FileManager= this;
